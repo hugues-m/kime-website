@@ -10,4 +10,3 @@ const translations: Record<string, Translations> = {
 export function getTranslations(locale: string): Translations {
   return translations[locale] || translations.fr;
 }
-

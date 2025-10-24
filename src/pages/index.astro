@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HomePage from '../components/HomePage';
+import HomePage from '../components/HomePage.astro';
 import { getTranslations } from '../i18n/utils';
 
 const translations = getTranslations('fr');
 ---
 
 <Layout title="KIME" lang="fr">
-	<HomePage translations={translations} client:load />
+  <HomePage translations={translations} />
 </Layout>
