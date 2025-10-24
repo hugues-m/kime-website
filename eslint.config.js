@@ -20,8 +20,8 @@ export default [
         sourceType: 'module',
         extraFileExtensions: ['.astro'],
         // Enable TypeScript within <script> in .astro files
-        parser: tsParser
-      }
+        parser: tsParser,
+      },
     },
   },
   {
