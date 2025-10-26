@@ -12,9 +12,11 @@
     "lint": "eslint . --ext .js,.mjs,.jsx,.ts,.tsx,.astro",
     "lint:fix": "eslint . --ext .js,.mjs,.jsx,.ts,.tsx,.astro --fix",
     "type-check": "tsc --noEmit",
-    "validate": "pnpm lint && pnpm format:check && pnpm type-check"
+    "tidy": "pnpm lint:fix && pnpm format && pnpm astro check",
+    "validate": "pnpm lint && pnpm format:check && pnpm astro check"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.5",
     "@astrojs/vercel": "^9.0.0",
     "@lucide/astro": "^0.548.0",
     "@tailwindcss/vite": "^4.1.16",
