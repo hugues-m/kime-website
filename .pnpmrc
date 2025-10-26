@@ -1,0 +1,5 @@
+auto-install-peers=true
+build-from-source=false
+shamefully-hoist=true
+script-shell=/bin/bash
+allow-scripts=true

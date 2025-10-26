@@ -1,3 +1,14 @@
+import {
+  Blocks,
+  Eye,
+  Layers,
+  Microscope,
+  ScanSearch,
+  SquareChartGantt,
+  SwatchBook,
+  Users,
+} from '@lucide/astro';
+
 export const fr = {
   site: {
     title: 'KIME',
@@ -42,37 +53,38 @@ export const fr = {
   },
   offers: {
     title: 'Nos offres',
-    intro: 'Nous proposons différents type d\'interventions en fonction de vos besoins :',
+    intro:
+      "Nous proposons différents type d'interventions en fonction de vos besoins :",
     introItems: [
-      'Production : vous avez une idée de produit, vous avez besoin d\'une équipe pour gérer la réalisation.',
-      'Conseil : vous avez déjà une équipe et un produit, mais ça ne fonctionne pas comme espéré. Vous souhaitez une aide structurelle, sur la vision ou la technique pour mener vos équipes vers l\'autonomie',
+      "Production : vous avez une idée de produit, vous avez besoin d'une équipe pour gérer la réalisation.",
+      "Conseil : vous avez déjà une équipe et un produit, mais ça ne fonctionne pas comme espéré. Vous souhaitez une aide structurelle, sur la vision ou la technique pour mener vos équipes vers l'autonomie",
     ],
     list: [
       {
-        number: '01',
+        number: '01' as const,
         type: 'Production',
         title: 'Création et amélioration de produits numériques',
         description:
-          'Que vous fassiez évoluer un produit ou lanciez une idée, nous clarifions vos objectifs et les <strong>besoins réels des utilisateurs</strong>. Une enquête de design teste les hypothèses sur le terrain. Nous <strong>prototypons vite et mesurons l\'impact</strong>. Les apprentissages guident <strong>un développement en cycles courts</strong> pour livrer de manière continue. À chaque étape, les retours utilisateurs nous font converger vers la solution la plus pertinente.',
+          "Que vous fassiez évoluer un produit ou lanciez une idée, nous clarifions vos objectifs et les <strong>besoins réels des utilisateurs</strong>. Une enquête de design teste les hypothèses sur le terrain. Nous <strong>prototypons vite et mesurons l'impact</strong>. Les apprentissages guident <strong>un développement en cycles courts</strong> pour livrer de manière continue. À chaque étape, les retours utilisateurs nous font converger vers la solution la plus pertinente.",
         tags: [
-          'Audit / Diagnostic',
-          'Enquête de design',
-          'Design UX/UI',
-          'Développement',
+          { icon: ScanSearch, label: 'Audit / Diagnostic' },
+          { icon: Microscope, label: 'Enquête de design' },
+          { icon: Eye, label: 'Design UX/UI' },
+          { icon: Blocks, label: 'Développement' },
         ],
       },
       {
-        number: '02',
+        number: '02' as const,
         type: 'Conseil',
         title:
           "Accompagnement à la structuration d'équipes et d'écosystèmes produits",
         description:
-          'Votre équipe est en place. Nous apportons <strong>un conseil opérationnel en direction de produit, organisation d\'équipe technique et design</strong>. Nous observons vos pratiques, clarifions la vision et les priorités, puis définissons les rôles et des habitudes de travail simples. Nous <strong>harmonisons le design, assainissons la tech et formons les responsables</strong> pour pérenniser les méthodes. Résultat: une équipe plus autonome, mieux organisée et des services plus cohérents.',
+          "Votre équipe est en place. Nous apportons <strong>un conseil opérationnel en direction de produit, organisation d'équipe technique et design</strong>. Nous observons vos pratiques, clarifions la vision et les priorités, puis définissons les rôles et des habitudes de travail simples. Nous <strong>harmonisons le design, assainissons la tech et formons les responsables</strong> pour pérenniser les méthodes. Résultat: une équipe plus autonome, mieux organisée et des services plus cohérents.",
         tags: [
-          'Recrutement',
-          "Organisation d'équipes produits",
-          'Stack technique',
-          'Design System',
+          { icon: Users, label: 'Recrutement' },
+          { icon: SquareChartGantt, label: "Organisation d'équipes produits" },
+          { icon: Layers, label: 'Stack technique' },
+          { icon: SwatchBook, label: 'Design System' },
         ],
       },
     ],
@@ -118,7 +130,7 @@ export const fr = {
           {
             title: 'Cadrage et vision',
             description:
-              "Clarification des objectifs, des publics et des enjeux, définition de la proposition de valeur, feuille de route priorisée et mesurable.",
+              'Clarification des objectifs, des publics et des enjeux, définition de la proposition de valeur, feuille de route priorisée et mesurable.',
           },
           {
             title: 'Pilotage par itérations',
@@ -137,15 +149,18 @@ export const fr = {
         items: [
           {
             title: 'Architecture',
-            description: "Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité",
+            description:
+              'Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité',
           },
           {
             title: 'Delivery',
-            description: "Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards",
-          }, 
+            description:
+              'Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards',
+          },
           {
             title: 'Intelligence artificielle',
-            description: "Intégration d’outils IA, tout en gardant la main sur vos données",
+            description:
+              'Intégration d’outils IA, tout en gardant la main sur vos données',
           },
         ],
       },
