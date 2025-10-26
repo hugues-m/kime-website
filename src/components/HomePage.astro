@@ -19,7 +19,7 @@ const { translations } = Astro.props as Props;
       <p
         class="col-span-12 font-body text-[28px] font-medium text-accent leading-normal max-w-[996px]"
       >
-        {translations.hero.intro}
+        <span set:html={translations.hero.intro} />
       </p>
       <p
         class="col-span-12 font-body text-[28px] font-medium text-primary leading-normal max-w-[996px]"
@@ -40,10 +40,9 @@ const { translations } = Astro.props as Props;
       </div>
       <div class="col-span-12 grid grid-cols-12 gap-6 items-start w-full">
         {
-          translations.approach.principles.map((principle, index) => (
+          translations.approach.principles.map((principle) => (
             <div
               class="col-span-12 md:col-span-6 lg:col-span-3 flex flex-col gap-8 items-start"
-              key={index}
             >
               <Hr />
               <div class="flex flex-col gap-3 items-start text-base text-primary">
@@ -68,35 +67,39 @@ const { translations } = Astro.props as Props;
           {translations.offers.title}
         </p>
       </div>
-      <p
-        class="col-span-12 font-body text-xl font-medium text-primary max-w-[996px]"
-      >
+      <p class="col-span-12 font-body text-xl font-medium text-primary">
         {translations.offers.intro}
       </p>
-      <div class="col-span-12 grid grid-cols-12 gap-6 items-start w-full">
+      <ul class="col-span-12 font-body text-base text-primary list-disc ms-6">
+        {translations.offers.introItems.map((item) => (
+          <li class="mb-2">{item}</li>
+        ))}
+      </ul>
+      <p class="col-span-12 font-body text-xl font-medium text-primary ">
+        {translations.offers.outro}
+      </p>
+      <div class="col-span-12 grid grid-cols-12 gap-6 items-start w-full strong-semibold">
         {
-          translations.offers.list.map((offer, index) => (
+          translations.offers.list.map((offer) => (
             <div
               class="col-span-12 md:col-span-6 flex flex-col gap-6 items-start"
-              key={index}
             >
               <Hr />
               <div class="flex flex-col gap-4">
                 <p class="font-body text-sm font-semibold text-accent">
-                  Offre {offer.number}
+                  Offre {offer.number} - {offer.type}
                 </p>
                 <p class="font-title text-2xl font-bold text-primary">
                   {offer.title}
                 </p>
               </div>
               <p class="font-body text-base font-normal text-primary leading-normal">
-                {offer.description}
+                <span set:html={offer.description} />
               </p>
               <div class="flex flex-wrap gap-2 items-start w-full">
-                {offer.tags.map((tag, tagIndex) => (
+                {offer.tags.map((tag) => (
                   <div
                     class="bg-background-grey px-[14px] py-[10px] rounded-md"
-                    key={tagIndex}
                   >
                     <p class="font-body text-sm font-normal text-primary">
                       {tag}
@@ -108,11 +111,7 @@ const { translations } = Astro.props as Props;
           ))
         }
       </div>
-      <p
-        class="col-span-12 font-body text-xl font-medium text-primary max-w-[996px]"
-      >
-        {translations.offers.outro}
-      </p>
+   
     </section>
 
     <section
@@ -161,10 +160,9 @@ const { translations } = Astro.props as Props;
       </div>
       <div class="col-span-12 grid grid-cols-12 gap-12 items-start w-full">
         {
-          translations.collective.members.map((member, index) => (
+          translations.collective.members.map((member) => (
             <div
               class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start"
-              key={index}
             >
               <div class="w-[108px] h-[108px] bg-background-light rounded-md" />
               <div class="flex flex-col gap-2 items-start text-primary">
@@ -202,18 +200,17 @@ const { translations } = Astro.props as Props;
       </div>
       <div class="col-span-12 grid grid-cols-12 gap-12 items-start w-full">
         {
-          translations.skills.categories.map((category, index) => (
+          translations.skills.categories.map((category) => (
             <div
               class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start"
-              key={index}
             >
               <Hr />
               <h3 class="font-title text-2xl font-bold text-primary">
                 {category.title}
               </h3>
               <div class="flex flex-col gap-4 text-base text-primary">
-                {category.items.map((item, itemIndex) => (
-                  <div key={itemIndex}>
+                {category.items.map((item) => (
+                  <div>
                     <p class="font-body font-bold text-accent mb-1">
                       {item.title}
                     </p>
@@ -231,7 +228,7 @@ const { translations } = Astro.props as Props;
       id="contact"
       class="w-full pb-[120px] grid grid-cols-12 gap-y-[90px] gap-x-4 justify-center"
     >
-      <Hr class="col-span-12" />
+      <Hr className="col-span-12" />
       <div class="col-span-12 flex flex-col gap-2 items-start">
         <p class="font-body text-base font-bold text-primary">
           {translations.contact.title}

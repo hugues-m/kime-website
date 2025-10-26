@@ -6,6 +6,6 @@ import { getTranslations } from '../../i18n/utils';
 const translations = getTranslations('en');
 ---
 
-<Layout title="KIME" lang="en">
+<Layout title={translations.site.title} lang="en" description={translations.site.description}>
   <HomePage translations={translations} />
 </Layout>

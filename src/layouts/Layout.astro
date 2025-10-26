@@ -4,9 +4,10 @@ import '../styles/global.css';
 type Props = {
   title: string;
   lang: string;
+  description?: string;
 };
 
-const { title, lang } = Astro.props;
+const { title, lang, description } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -16,6 +17,21 @@ const { title, lang } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+		{description && <meta name="description" content={description} />}
+		<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+		<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+		<link
+			rel="preload"
+			as="style"
+			href="https://api.fontshare.com/v2/css?f[]=general-sans@1&f[]=synonym@1&display=swap"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+		<noscript>
+			<link
+				rel="stylesheet"
+				href="https://api.fontshare.com/v2/css?f[]=general-sans@1&f[]=synonym@1&display=swap"
+			/>
+		</noscript>
     <title>{title}</title>
   </head>
   <body id="top">

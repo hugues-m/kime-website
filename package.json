@@ -10,7 +10,9 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint . --ext .js,.mjs,.jsx,.ts,.tsx,.astro",
-    "lint:fix": "eslint . --ext .js,.mjs,.jsx,.ts,.tsx,.astro --fix"
+    "lint:fix": "eslint . --ext .js,.mjs,.jsx,.ts,.tsx,.astro --fix",
+    "type-check": "tsc --noEmit",
+    "validate": "pnpm lint && pnpm format:check && pnpm type-check"
   },
   "dependencies": {
     "@astrojs/vercel": "^9.0.0",

@@ -3,6 +3,7 @@ import type { Translations } from './fr';
 export const en: Translations = {
   site: {
     title: 'KIME',
+    description: 'Design and development of digital products',
   },
   nav: {
     projects: 'Projects',
@@ -12,7 +13,7 @@ export const en: Translations = {
   hero: {
     title: 'Design and development of digital products',
     intro:
-      'Kime is a collective of 3 professionals with complementary skills: a product manager, a developer and a designer. Thanks to this complementarity, we can respond to all needs around the design of digital tools.',
+      'Kime is a collective of 3 professionals with complementary skills: <strong>a product manager, a developer and a designer</strong>. Thanks to this complementarity, we can respond to <strong>all needs around the design of digital tools</strong>.',
     mission:
       'We want to put our skills at the service of projects that contribute to an emancipatory, sustainable and desirable digital world.',
   },
@@ -43,13 +44,18 @@ export const en: Translations = {
   },
   offers: {
     title: 'Our offers',
-    intro: 'We offer different types of interventions according to your needs',
+    intro: 'We offer different types of interventions according to your needs:',
+    introItems: [
+      'Production: you have a product idea, you need a team to manage the implementation.',
+      'Consulting: you already have a team and product, but it\'s not working as expected. You want structural help, on vision or technology to lead your teams to autonomy',
+    ],
     list: [
       {
         number: '01',
+        type: 'Production',
         title: 'Creation and improvement of digital products',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec malesuada massa. Aenean sit amet tempus nibh. Vivamus leo mauris, bibendum vitae orci a, mattis porttitor tortor. Suspendisse consequat elit ac libero ornare dignissim. Donec at purus felis. Nam egestas cursus justo pellentesque congue.',
+          'Whether you are growing a product or launching an idea, we clarify your objectives and <strong>real user needs</strong>. A design survey tests hypotheses in the field. We <strong>prototype quickly and measure impact</strong>. Learning guides <strong>development in short cycles</strong> to deliver continuously. At each stage, user feedback helps us converge to the most relevant solution.',
         tags: [
           'Audit / Diagnostic',
           'Design survey',
@@ -59,9 +65,10 @@ export const en: Translations = {
       },
       {
         number: '02',
+        type: 'Consulting',
         title: 'Support for structuring teams and product ecosystems',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec malesuada massa. Aenean sit amet tempus nibh. Vivamus leo mauris, bibendum vitae orci a, mattis porttitor tortor. Suspendisse consequat elit ac libero ornare dignissim. Donec at purus felis. Nam egestas cursus justo pellentesque congue.',
+          'Your team is in place. We provide <strong>operational consulting on product direction, technical team and design organization</strong>. We observe your practices, clarify vision and priorities, then define roles and simple work habits. We <strong>harmonize design, clean up tech and train leaders</strong> to sustain methods. Result: a more autonomous team, better organized and more coherent services.',
         tags: [
           'Recruitment',
           'Product team organization',
@@ -110,19 +117,19 @@ export const en: Translations = {
         title: 'Product',
         items: [
           {
-            title: 'Research',
+            title: 'Framing and vision',
             description:
-              'field research, diagnostics, ideation workshops, user testing and interviews',
+              'Clarification of objectives, audiences and challenges, definition of value proposition, prioritized and measurable roadmap.',
           },
           {
-            title: 'UX/UI Design',
+            title: 'Iteration-driven delivery',
             description:
-              'User experience and interface, prototyping, design system',
+              'Organization of work in short cycles, regular review of results, continuous adjustments to deliver value quickly.',
           },
           {
-            title: 'Graphic design',
+            title: 'Responsibilities and roles',
             description:
-              'Visual identity, digital and printed graphic materials',
+              'Clear allocation of responsibilities, simple and useful rituals, synchronization between product, design and technology.',
           },
         ],
       },
@@ -130,19 +137,19 @@ export const en: Translations = {
         title: 'Development',
         items: [
           {
-            title: 'Research',
+            title: 'Architecture',
             description:
-              'field research, diagnostics, ideation workshops, user testing and interviews',
+              'Design technical strategy for project needs and constraints, built for performance and scalability',
           },
           {
-            title: 'UX/UI Design',
+            title: 'Delivery',
             description:
-              'User experience and interface, prototyping, design system',
+              'Continuous value delivery, using open source technologies while respecting latest standards and best practices',
           },
           {
-            title: 'Graphic design',
+            title: 'Artificial intelligence',
             description:
-              'Visual identity, digital and printed graphic materials',
+              'Integration of AI tools while maintaining full control over your data',
           },
         ],
       },
@@ -170,7 +177,7 @@ export const en: Translations = {
   },
   contact: {
     title: 'Contact us to discuss your project',
-    email: 'contact@kime.tech',
+    email: 'contact@kime.studio',
     emailLabel: 'Send us an email at',
   },
 };

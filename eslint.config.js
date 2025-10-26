@@ -10,7 +10,7 @@ export default [
     ignores: ['dist', 'node_modules', '.astro'],
   },
   js.configs.recommended,
-  astro.configs.recommended,
+  ...astro.configs.recommended,
   {
     files: ['**/*.astro'],
     languageOptions: {

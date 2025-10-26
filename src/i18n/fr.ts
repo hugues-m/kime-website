@@ -1,6 +1,7 @@
 export const fr = {
   site: {
     title: 'KIME',
+    description: 'Design et développement de produits numériques',
   },
   nav: {
     projects: 'Projets',
@@ -10,7 +11,7 @@ export const fr = {
   hero: {
     title: 'Design et développement de produits numériques',
     intro:
-      "Kime est un collectif de 3 professionnels aux compétences complémentaires : un product manager, un développeur et un designer. Grâce à cette complémentarité, nous pouvons répondre à l'ensemble des besoins autour de la conception d'outils numériques.",
+      "Kime est un collectif de 3 professionnels aux compétences complémentaires : <strong>un product manager, un développeur et un designer</strong>. Grâce à cette complémentarité, nous pouvons répondre à <strong>l'ensemble des besoins autour de la conception d'outils numériques</strong>.",
     mission:
       'Nous souhaitons mettre nos compétences au service de projets qui contribuent à un numérique émancipateur, durable et désirable.',
   },
@@ -41,14 +42,18 @@ export const fr = {
   },
   offers: {
     title: 'Nos offres',
-    intro:
-      "Nous proposons différents type d'interventions en fonction de vos besoins",
+    intro: 'Nous proposons différents type d\'interventions en fonction de vos besoins :',
+    introItems: [
+      'Production : vous avez une idée de produit, vous avez besoin d\'une équipe pour gérer la réalisation.',
+      'Conseil : vous avez déjà une équipe et un produit, mais ça ne fonctionne pas comme espéré. Vous souhaitez une aide structurelle, sur la vision ou la technique pour mener vos équipes vers l\'autonomie',
+    ],
     list: [
       {
         number: '01',
+        type: 'Production',
         title: 'Création et amélioration de produits numériques',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec malesuada massa. Aenean sit amet tempus nibh. Vivamus leo mauris, bibendum vitae orci a, mattis porttitor tortor. Suspendisse consequat elit ac libero ornare dignissim. Donec at purus felis. Nam egestas cursus justo pellentesque congue.',
+          'Que vous fassiez évoluer un produit ou lanciez une idée, nous clarifions vos objectifs et les <strong>besoins réels des utilisateurs</strong>. Une enquête de design teste les hypothèses sur le terrain. Nous <strong>prototypons vite et mesurons l\'impact</strong>. Les apprentissages guident <strong>un développement en cycles courts</strong> pour livrer de manière continue. À chaque étape, les retours utilisateurs nous font converger vers la solution la plus pertinente.',
         tags: [
           'Audit / Diagnostic',
           'Enquête de design',
@@ -58,10 +63,11 @@ export const fr = {
       },
       {
         number: '02',
+        type: 'Conseil',
         title:
           "Accompagnement à la structuration d'équipes et d'écosystèmes produits",
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec malesuada massa. Aenean sit amet tempus nibh. Vivamus leo mauris, bibendum vitae orci a, mattis porttitor tortor. Suspendisse consequat elit ac libero ornare dignissim. Donec at purus felis. Nam egestas cursus justo pellentesque congue.',
+          'Votre équipe est en place. Nous apportons <strong>un conseil opérationnel en direction de produit, organisation d\'équipe technique et design</strong>. Nous observons vos pratiques, clarifions la vision et les priorités, puis définissons les rôles et des habitudes de travail simples. Nous <strong>harmonisons le design, assainissons la tech et formons les responsables</strong> pour pérenniser les méthodes. Résultat: une équipe plus autonome, mieux organisée et des services plus cohérents.',
         tags: [
           'Recrutement',
           "Organisation d'équipes produits",
@@ -110,19 +116,19 @@ export const fr = {
         title: 'Produit',
         items: [
           {
-            title: 'Recherche',
+            title: 'Cadrage et vision',
             description:
-              "enquête terrain, diagnostic, ateliers d'idéation, tests et entretiens utilisateurs",
+              "Clarification des objectifs, des publics et des enjeux, définition de la proposition de valeur, feuille de route priorisée et mesurable.",
           },
           {
-            title: 'Conception UX/UI',
+            title: 'Pilotage par itérations',
             description:
-              'Expérience et interface utilisateur, prototypage, design system',
+              'Organisation du travail en cycles courts, revue régulière des résultats, ajustements continus pour livrer de la valeur rapidement.',
           },
           {
-            title: 'Conception graphique',
+            title: 'Responsabilités et rôles',
             description:
-              'Identité visuelle, supports graphiques numériques et imprimés',
+              'Répartition claire des responsabilités, rituels simples et utiles, synchronisation entre produit, design et technique.',
           },
         ],
       },
@@ -130,19 +136,16 @@ export const fr = {
         title: 'Développement',
         items: [
           {
-            title: 'Recherche',
-            description:
-              "enquête terrain, diagnostic, ateliers d'idéation, tests et entretiens utilisateurs",
+            title: 'Architecture',
+            description: "Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité",
           },
           {
-            title: 'Conception UX/UI',
-            description:
-              'Expérience et interface utilisateur, prototypage, design system',
-          },
+            title: 'Delivery',
+            description: "Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards",
+          }, 
           {
-            title: 'Conception graphique',
-            description:
-              'Identité visuelle, supports graphiques numériques et imprimés',
+            title: 'Intelligence artificielle',
+            description: "Intégration d’outils IA, tout en gardant la main sur vos données",
           },
         ],
       },
@@ -170,7 +173,7 @@ export const fr = {
   },
   contact: {
     title: 'Contactez-nous pour discuter de votre projet',
-    email: 'contact@kime.tech',
+    email: 'contact@kime.studio',
     emailLabel: 'Envoyez nous un email à',
   },
 };
