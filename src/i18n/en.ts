@@ -1,3 +1,4 @@
+import { Blocks, Eye, Layers, Microscope, ScanSearch, SquareChartGantt, SwatchBook, Users } from "@lucide/astro";
 import type { Translations } from './fr';
 
 export const en: Translations = {
@@ -57,10 +58,10 @@ export const en: Translations = {
         description:
           'Whether you are growing a product or launching an idea, we clarify your objectives and <strong>real user needs</strong>. A design survey tests hypotheses in the field. We <strong>prototype quickly and measure impact</strong>. Learning guides <strong>development in short cycles</strong> to deliver continuously. At each stage, user feedback helps us converge to the most relevant solution.',
         tags: [
-          'Audit / Diagnostic',
-          'Design survey',
-          'UX/UI Design',
-          'Development',
+          {icon: ScanSearch, label: 'Audit / Diagnostic'},
+          {icon: Microscope, label: 'Design survey'},
+          {icon: Eye, label: 'UX/UI Design'},
+          {icon: Blocks, label: 'Development'},
         ],
       },
       {
@@ -70,10 +71,10 @@ export const en: Translations = {
         description:
           'Your team is in place. We provide <strong>operational consulting on product direction, technical team and design organization</strong>. We observe your practices, clarify vision and priorities, then define roles and simple work habits. We <strong>harmonize design, clean up tech and train leaders</strong> to sustain methods. Result: a more autonomous team, better organized and more coherent services.',
         tags: [
-          'Recruitment',
-          'Product team organization',
-          'Technical stack',
-          'Design System',
+          {icon: Users, label: 'Recruitment'},
+          {icon: SquareChartGantt, label: 'Product team organization'},
+          {icon: Layers, label: 'Technical stack'},
+          {icon: SwatchBook, label: 'Design System'},
         ],
       },
     ],

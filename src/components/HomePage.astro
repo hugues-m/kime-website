@@ -41,9 +41,7 @@ const { translations } = Astro.props as Props;
       <div class="col-span-12 grid grid-cols-12 gap-6 items-start w-full">
         {
           translations.approach.principles.map((principle) => (
-            <div
-              class="col-span-12 md:col-span-6 lg:col-span-3 flex flex-col gap-8 items-start"
-            >
+            <div class="col-span-12 md:col-span-6 lg:col-span-3 flex flex-col gap-8 items-start">
               <Hr />
               <div class="flex flex-col gap-3 items-start text-base text-primary">
                 <p class="font-body font-bold whitespace-pre-wrap">
@@ -71,19 +69,21 @@ const { translations } = Astro.props as Props;
         {translations.offers.intro}
       </p>
       <ul class="col-span-12 font-body text-base text-primary list-disc ms-6">
-        {translations.offers.introItems.map((item) => (
-          <li class="mb-2">{item}</li>
-        ))}
+        {
+          translations.offers.introItems.map((item) => (
+            <li class="mb-2">{item}</li>
+          ))
+        }
       </ul>
-      <p class="col-span-12 font-body text-xl font-medium text-primary ">
+      <p class="col-span-12 font-body text-xl font-medium text-primary">
         {translations.offers.outro}
       </p>
-      <div class="col-span-12 grid grid-cols-12 gap-6 items-start w-full strong-semibold">
+      <div
+        class="col-span-12 grid grid-cols-12 gap-6 items-start w-full strong-semibold"
+      >
         {
           translations.offers.list.map((offer) => (
-            <div
-              class="col-span-12 md:col-span-6 flex flex-col gap-6 items-start"
-            >
+            <div class="col-span-12 md:col-span-6 flex flex-col gap-6 items-start">
               <Hr />
               <div class="flex flex-col gap-4">
                 <p class="font-body text-sm font-semibold text-accent">
@@ -97,21 +97,22 @@ const { translations } = Astro.props as Props;
                 <span set:html={offer.description} />
               </p>
               <div class="flex flex-wrap gap-2 items-start w-full">
-                {offer.tags.map((tag) => (
-                  <div
-                    class="bg-background-grey px-[14px] py-[10px] rounded-md"
-                  >
-                    <p class="font-body text-sm font-normal text-primary">
-                      {tag}
-                    </p>
-                  </div>
-                ))}
+                {offer.tags.map((tag) => {
+                  const IconComponent = tag.icon;
+                  return (
+                    <div class="bg-background-grey px-[14px] py-[10px] rounded-md flex gap-2 items-center">
+                      <IconComponent class="w-5 h-5" />
+                      <p class="font-body text-sm font-normal text-primary">
+                        {tag.label}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))
         }
       </div>
-   
     </section>
 
     <section
@@ -161,9 +162,7 @@ const { translations } = Astro.props as Props;
       <div class="col-span-12 grid grid-cols-12 gap-12 items-start w-full">
         {
           translations.collective.members.map((member) => (
-            <div
-              class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start"
-            >
+            <div class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start">
               <div class="w-[108px] h-[108px] bg-background-light rounded-md" />
               <div class="flex flex-col gap-2 items-start text-primary">
                 <p class="font-body text-base font-bold">{member.name}</p>
@@ -201,9 +200,7 @@ const { translations } = Astro.props as Props;
       <div class="col-span-12 grid grid-cols-12 gap-12 items-start w-full">
         {
           translations.skills.categories.map((category) => (
-            <div
-              class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start"
-            >
+            <div class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start">
               <Hr />
               <h3 class="font-title text-2xl font-bold text-primary">
                 {category.title}
