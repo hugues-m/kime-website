@@ -10,6 +10,7 @@ import thibaultImage from '../assets/images/thibault.png';
 import sylvainImage from '../assets/images/sylvain.png';
 import Header from './Header.astro';
 import { config } from '../config/config';
+import { Image } from 'astro:assets';
 
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
@@ -199,10 +200,12 @@ const { isProduction } = config;
                     class="w-[180px] h-[180px] rounded-[6px] flex items-center justify-center shrink-0"
                     style={`background-color: ${project.backgroundColor}`}
                   >
-                    <img
-                      src={imageMap[project.image].src}
+                    <Image
+                      src={imageMap[project.image]}
                       alt={project.imageAlt}
                       class="max-w-[130px] max-h-[130px] object-contain"
+                      width={390}
+                      height={390}
                     />
                   </div>
                 </div>
@@ -228,9 +231,11 @@ const { isProduction } = config;
               {translations.collective.members.map((member) => (
                 <div class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start">
                   <div class="w-[108px] h-[108px] bg-background-light rounded-md">
-                    <img
-                      src={imageMap[member.image].src}
+                    <Image
+                      src={imageMap[member.image]}
                       alt={member.name}
+                      width={324}
+                      height={324}
                       class="w-full h-full object-cover"
                     />
                   </div>
