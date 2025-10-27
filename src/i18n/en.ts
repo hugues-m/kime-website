@@ -92,30 +92,76 @@ export const en: Translations = {
   },
   projects: {
     title: 'Selected projects',
-    cta: 'To learn more about our projects, contact us',
+    cta: 'To learn more about our projects, <a href="#contact" class="underline cursor-pointer">contact us</a>',
+    featured: {
+      image: 'fne.svg' as const,
+      imageAlt: 'Map of France with digital mediation points',
+      title:
+        'A set of digital tools useful for implementing the national public policy on digital inclusion',
+      description:
+        'For more than 3 years, we have supported the Digital Society program of the National Agency for Territorial Cohesion in improving and designing an ecosystem of digital tools useful for digital mediation actors to support people who are far from digital technology and manage various programs.',
+      collaboration:
+        'In collaboration with <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> and <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - TODAY',
+      tags: ['Product design', 'Team structuring'],
+    },
+    list: [
+      {
+        image: 'docaposte.jpg' as const,
+        imageAlt: 'Docaposte design system',
+        backgroundColor: '#417dff',
+        title: 'Making the user experience of Docaposte tools consistent',
+        description:
+          'The project objective is twofold: Install the new Docaposte identity within these products & create a Design System that is easy to use and adapt to very diverse B2B products. This Design System is both a toolbox and a user guide for all product teams.',
+        collaboration:
+          'In collaboration with <a href="https://www.docaposte.com/solutions/pollux-design-dexperience-innovation" target="_blank" class="underline cursor-pointer">Pollux</a> · 2019',
+        tags: ['Design system', 'UX/UI Design'],
+      },
+      {
+        image: 'gps.png' as const,
+        imageAlt: 'Evelity indoor GPS application',
+        backgroundColor: '#f5f5fe',
+        title: 'Indoor GPS application for visually impaired people',
+        description:
+          'An iOS and Android mobile application that allows people with visual or motor disabilities to be guided, outdoors and indoors in complex places such as metro stations.',
+        collaboration:
+          'In collaboration with <a href="https://www.evelity.com/" target="_blank" class="underline cursor-pointer">Evelity</a> · 2019',
+        tags: ['Mobile', 'Development'],
+      },
+      {
+        image: 'nutriscore.png' as const,
+        imageAlt: 'Nutriscore',
+        backgroundColor: '#f4ed95',
+        title: 'Experimentation platform for research',
+        description:
+          'Web applications for experiments in behavioral economics to design and conduct "multiplayer" research protocols in real time. Used in particular to implement the nutriscore in France.',
+        collaboration:
+          'In collaboration with the <a href="https://gael.univ-grenoble-alpes.fr" target="_blank" class="underline cursor-pointer">Laboratory of Applied Economics of Grenoble</a> · 2018 - 2021',
+        tags: ['Web', 'Development'],
+      },
+    ],
   },
   collective: {
     title: 'The members of the collective',
     members: [
       {
-        image: '/images/thibault.png',
+        image: 'sylvain.png' as const,
+        name: 'Sylvain Aubry',
+        role: 'Designer',
+        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie lacinia augue, non aliquet diam euismod quis. Vivamus commodo sodales velit, et pulvinar augue mollis sed. Nam a odio pulvinar libero sodales dignissim. Quisque blandit tempor tellus.\n\nEtiam scelerisque imperdiet odio, id cursus diam tempus quis. Nam a odio pulvinar libero.',
+        linkedin: 'https://www.linkedin.com/',
+      },
+      {
+        image: 'thibault.png' as const,
         name: 'Thibault Rouveyrol',
         role: 'Product Manager',
         bio: 'From San Francisco to Paris, Thibault has worked in areas such as IoT, video games, health, or accessibility. He has acquired a strategic and global vision of High Tech project realization by managing and coordinating technical and design teams.\n\nYou can also find him in his garden automating everything that can be, or with a backpack somewhere around the world.',
         linkedin: 'https://www.linkedin.com/in/thibaultrouveyrol/',
       },
       {
-        image: '/images/hugues.png',
+        image: 'hugues.png' as const,
         name: 'Hugues Maignol',
         role: 'CTO, Developer',
         bio: 'Entrepreneur, Hugues has founded and supported companies as CTO, from startups to multinationals. He will know how to design the technical architecture that suits your project and lead the team to achieve it.\n\nBetween two coding sessions, you can find him on the tatami or at his piano.',
-        linkedin: 'https://www.linkedin.com/',
-      },
-      {
-        image: '/images/sylvain.png',
-        name: 'Sylvain Aubry',
-        role: 'Designer',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie lacinia augue, non aliquet diam euismod quis. Vivamus commodo sodales velit, et pulvinar augue mollis sed. Nam a odio pulvinar libero sodales dignissim. Quisque blandit tempor tellus.\n\nEtiam scelerisque imperdiet odio, id cursus diam tempus quis. Nam a odio pulvinar libero.',
         linkedin: 'https://www.linkedin.com/',
       },
     ],
@@ -123,6 +169,26 @@ export const en: Translations = {
   skills: {
     title: 'Our expertise',
     categories: [
+      {
+        title: 'Design',
+        items: [
+          {
+            title: 'User research',
+            description:
+              'Field research, diagnostics, ideation workshops, user testing and interviews',
+          },
+          {
+            title: 'UX/UI Design',
+            description:
+              'User experience and interface, prototyping, design system',
+          },
+          {
+            title: 'Graphic design',
+            description:
+              'Visual identity, digital and printed graphic materials',
+          },
+        ],
+      },
       {
         title: 'Product',
         items: [
@@ -160,26 +226,6 @@ export const en: Translations = {
             title: 'Artificial intelligence',
             description:
               'Integration of AI tools while maintaining full control over your data',
-          },
-        ],
-      },
-      {
-        title: 'Design',
-        items: [
-          {
-            title: 'User research',
-            description:
-              'Field research, diagnostics, ideation workshops, user testing and interviews',
-          },
-          {
-            title: 'UX/UI Design',
-            description:
-              'User experience and interface, prototyping, design system',
-          },
-          {
-            title: 'Graphic design',
-            description:
-              'Visual identity, digital and printed graphic materials',
           },
         ],
       },
