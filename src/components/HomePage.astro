@@ -1,11 +1,29 @@
 ---
 import type { Translations } from '../i18n/fr';
-import Header from './Header.astro';
 import Hr from './Hr.astro';
+import fneImage from '../assets/images/fne.svg';
+import nutriscoreImage from '../assets/images/nutriscore.png';
+import gpsImage from '../assets/images/gps.png';
+import docaposteImage from '../assets/images/docaposte.jpg';
+import huguesImage from '../assets/images/hugues.png';
+import thibaultImage from '../assets/images/thibault.png';
+import sylvainImage from '../assets/images/sylvain.png';
+import Header from './Header.astro';
 import { config } from '../config/config';
+import { Image } from 'astro:assets';
 
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
+
+const imageMap = {
+  'fne.svg': fneImage,
+  'nutriscore.png': nutriscoreImage,
+  'gps.png': gpsImage,
+  'docaposte.jpg': docaposteImage,
+  'hugues.png': huguesImage,
+  'thibault.png': thibaultImage,
+  'sylvain.png': sylvainImage,
+};
 const { isProduction } = config;
 ---
 
@@ -50,9 +68,10 @@ const { isProduction } = config;
                 <div class="col-span-12 md:col-span-6 lg:col-span-3 flex flex-col gap-8 items-start">
                   <Hr />
                   <div class="flex flex-col gap-3 items-start text-base text-primary">
-                    <p class="font-body font-bold whitespace-pre-wrap">
-                      {principle.title}
-                    </p>
+                    <p
+                      set:text={principle.title}
+                      class="font-body font-bold whitespace-pre-wrap"
+                    />
                     <p class="font-body font-normal">{principle.description}</p>
                   </div>
                 </div>
@@ -116,29 +135,85 @@ const { isProduction } = config;
 
           <section
             id="projects"
-            class="w-full pb-[120px] grid grid-cols-12 gap-y-[120px] md:gap-x-6 justify-center"
+            class="w-full pb-[120px] grid grid-cols-12 gap-y-[90px] gap-x-4 justify-center"
           >
-            <div class="col-span-12 flex flex-col gap-16 items-start w-full">
-              <h2 class="font-title text-3xl md:text-4xl lg:text-[40px] font-bold text-black tracking-[0.8px]">
+            <Hr className="col-span-12" />
+            <div class="col-span-12 flex flex-col gap-16">
+              <h2 class="font-title text-[40px] font-bold text-primary leading-normal tracking-[0.8px]">
                 {translations.projects.title}
               </h2>
-              <div class="flex flex-col gap-8 items-start justify-center w-full">
-                <div class="bg-background-light h-[360px] rounded-md w-full flex items-center justify-center">
-                  <p class="text-primary-light">Projets à venir</p>
+
+              <div class="flex flex-col gap-8">
+                <div class="bg-background-light h-[360px] rounded-[6px] flex items-center justify-center relative overflow-hidden">
+                  <img
+                    src={imageMap[translations.projects.featured.image].src}
+                    alt={translations.projects.featured.imageAlt}
+                    class="max-h-[280px] max-w-[262px] object-contain"
+                  />
                 </div>
-                <div class="flex flex-col gap-6 items-start w-full">
-                  <p class="font-title text-2xl font-bold text-primary">
-                    Exemple de projet
-                  </p>
-                  <p class="font-body text-base font-normal text-primary">
-                    Description du projet
-                  </p>
+                <div class="flex flex-col gap-6">
+                  <div class="flex flex-col gap-4">
+                    <h3 class="font-title text-[24px] font-bold text-primary leading-[34px]">
+                      {translations.projects.featured.title}
+                    </h3>
+                    <p class="font-body text-base font-normal text-primary leading-[22px]">
+                      {translations.projects.featured.description}
+                    </p>
+                    <p
+                      class="font-body text-sm font-bold text-accent leading-5"
+                      set:html={translations.projects.featured.collaboration}
+                    />
+                  </div>
+                  <div class="flex gap-2">
+                    {translations.projects.featured.tags.map((tag) => (
+                      <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body text-[12px] font-medium text-primary">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <button class="font-body text-base font-medium text-primary-light cursor-pointer">
-                {translations.projects.cta}
-              </button>
-              <Hr />
+              {translations.projects.list.map((project) => (
+                <div class="flex gap-12 items-start">
+                  <div class="flex-1 flex flex-col gap-6">
+                    <div class="flex flex-col gap-4">
+                      <h3 class="font-title text-[24px] font-bold text-primary leading-[34px]">
+                        {project.title}
+                      </h3>
+                      <p class="font-body text-base font-normal text-primary leading-[22px]">
+                        {project.description}
+                      </p>
+                      <p
+                        class="font-body text-sm font-bold text-accent leading-5"
+                        set:html={project.collaboration}
+                      />
+                    </div>
+                    <div class="flex gap-2">
+                      {project.tags.map((tag) => (
+                        <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body text-[12px] font-medium text-primary">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div
+                    class="w-[180px] h-[180px] rounded-[6px] flex items-center justify-center shrink-0"
+                    style={`background-color: ${project.backgroundColor}`}
+                  >
+                    <Image
+                      src={imageMap[project.image]}
+                      alt={project.imageAlt}
+                      class="max-w-[130px] max-h-[130px] object-contain"
+                      width={390}
+                      height={390}
+                    />
+                  </div>
+                </div>
+              ))}
+              <p
+                class="font-body text-base font-medium text-primary"
+                set:html={translations.projects.cta}
+              />
             </div>
           </section>
 
@@ -155,14 +230,23 @@ const { isProduction } = config;
             <div class="col-span-12 grid grid-cols-12 gap-12 items-start w-full">
               {translations.collective.members.map((member) => (
                 <div class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start">
-                  <div class="w-[108px] h-[108px] bg-background-light rounded-md" />
+                  <div class="w-[108px] h-[108px] bg-background-light rounded-md">
+                    <Image
+                      src={imageMap[member.image]}
+                      alt={member.name}
+                      width={324}
+                      height={324}
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
                   <div class="flex flex-col gap-2 items-start text-primary">
                     <p class="font-body text-base font-bold">{member.name}</p>
                     <p class="font-body text-xl font-medium">{member.role}</p>
                   </div>
-                  <p class="font-body text-base font-normal text-primary leading-normal whitespace-pre-wrap">
-                    {member.bio}
-                  </p>
+                  <p
+                    set:text={member.bio}
+                    class="font-body text-base font-normal text-primary leading-normal whitespace-pre-wrap"
+                  />
                   <a
                     href={member.linkedin}
                     target="_blank"

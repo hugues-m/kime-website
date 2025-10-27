@@ -54,9 +54,9 @@ export const fr = {
   offers: {
     title: 'Nos offres',
     intro:
-      "Nous proposons différents type d'interventions en fonction de vos besoins :",
+      'Nous proposons différents type d’interventions en fonction de vos besoins :',
     introItems: [
-      "Production : vous avez une idée de produit, vous avez besoin d'une équipe pour gérer la réalisation.",
+      'Production : vous avez une idée de produit, vous avez besoin d’une équipe pour gérer la réalisation.',
       "Conseil : vous avez déjà une équipe et un produit, mais ça ne fonctionne pas comme espéré. Vous souhaitez une aide structurelle, sur la vision ou la technique pour mener vos équipes vers l'autonomie",
     ],
     list: [
@@ -93,30 +93,76 @@ export const fr = {
   },
   projects: {
     title: 'Sélection de projets',
-    cta: 'Pour en savoir plus sur nos projets, contactez-nous',
+    cta: 'Pour en savoir plus sur nos projets, <a href="#contact" class="underline cursor-pointer">contactez-nous</a>',
+    featured: {
+      image: 'fne.svg' as const,
+      imageAlt: 'Carte de France avec points de médiation numérique',
+      title:
+        "Un ensemble d'outils numériques utiles à la mise en oeuvre de la politique publique nationale d'inclusion numérique",
+      description:
+        "Nous avons accompagné, pendant plus de 3 ans, le programme Société Numérique de l'Agence Nationale de la Cohésion des Territoires dans l'amélioration et la conception d'un écosystème d'outils numériques utiles aux acteurs de la médiation numérique pour accompagner les personnes éloignées du numérique et piloter différents dispositifs.",
+      collaboration:
+        'En collaboration avec <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> et <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - AUJOURD’HUI',
+      tags: ['Conception produit', "Structuration d'équipe"],
+    },
+    list: [
+      {
+        image: 'docaposte.jpg' as const,
+        imageAlt: 'Design system Docaposte',
+        backgroundColor: '#417dff',
+        title: "Mettre en cohérence l'expérience d'usage des outils Docaposte",
+        description:
+          "L'objectif du projet est double : Installer la nouvelle identité Docaposte au sein de ces produits & créer un Design System facile à utiliser et adapter à des produits B2B de natures très diverses. Ce Design System est à la fois une boîte à outils et un mode d'emploi à destination de l'ensemble des équipes produits.",
+        collaboration:
+          'En collaboration avec <a href="https://www.docaposte.com/solutions/pollux-design-dexperience-innovation" target="_blank" class="underline cursor-pointer">Pollux</a> · 2019',
+        tags: ['Design system', 'Design UX/UI'],
+      },
+      {
+        image: 'gps.png' as const,
+        imageAlt: 'Application GPS indoor Evelity',
+        backgroundColor: '#f5f5fe',
+        title: 'Application de GPS indoor pour personnes déficientes visuelles',
+        description:
+          "Une application mobile iOS et Android qui permet aux personnes en situation de handicap visuel ou moteur d'être guidées, en extérieur comme en intérieur dans des lieux complexes comme des stations de métro.",
+        collaboration:
+          'En collaboration avec <a href="https://www.evelity.com/" target="_blank" class="underline cursor-pointer">Evelity</a> · 2019',
+        tags: ['Mobile', 'Développement'],
+      },
+      {
+        image: 'nutriscore.png' as const,
+        imageAlt: 'Nutriscore',
+        backgroundColor: '#f4ed95',
+        title: "Plateforme d'expérimentation pour la recherche",
+        description:
+          'Applications web pour éxpérimentations en économie comportementale pour concevoir et mener des protocoles de recherches "multijoueurs" en temps réel. Utilisé nottament pour mettre en place le nutriscore en France.',
+        collaboration:
+          'En collaboration avec le <a href="https://gael.univ-grenoble-alpes.fr" target="_blank" class="underline cursor-pointer">Laboratoire d’Economie Appliquée de Grenoble</a> · 2018 - 2021',
+        tags: ['Web', 'Développement'],
+      },
+    ],
   },
   collective: {
     title: 'Les membres du collectif',
     members: [
       {
-        image: '/images/thibault.png',
+        image: 'sylvain.png' as const,
+        name: 'Sylvain Aubry',
+        role: 'Designer',
+        bio: 'Designer UX/UI formé à une approche globale du design, Sylvain est passionné par les phases d’enquêtes et de recherches utilisateurs qui impliquent une forme d’immersion dans une situation sociale et des pratiques spécifiques.\n\nSylvain apporte également un soin et une exigence particulière à la conception graphique des interfaces grâce à ses compétences en design graphique.',
+        linkedin: 'https://www.linkedin.com/',
+      },
+      {
+        image: 'thibault.png' as const,
         name: 'Thibault Rouveyrol',
         role: 'Product Manager',
         bio: "De San Francisco à Paris, Thibault a travaillé dans des univers comme l'IoT, le jeu vidéo, la santé, ou l'accessibilité. Il a acquis une vision stratégique et globale de la réalisation de projet High Tech en dirigeant et coordonnant les équipes techniques et design.\n\nVous pouvez également le croiser dans son jardin à automatiser tout ce qui peut l'être, ou en sac à dos quelque part autour du monde.",
         linkedin: 'https://www.linkedin.com/in/thibaultrouveyrol/',
       },
       {
-        image: '/images/hugues.png',
+        image: 'hugues.png' as const,
         name: 'Hugues Maignol',
         role: 'CTO, Développeur',
         bio: "Entrepreneur, Hugues a fondé et accompagné en tant que CTO des entreprises, de la startup à la multinationale. Il saura concevoir l'architecture technique qui convient à votre projet et mener l'équipe pour le réaliser.\n\nEntre deux sessions de code, vous pouvez le trouver sur les tatami ou devant son piano.",
-        linkedin: 'https://www.linkedin.com/',
-      },
-      {
-        image: '/images/sylvain.png',
-        name: 'Sylvain Aubry',
-        role: 'Designer',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie lacinia augue, non aliquet diam euismod quis. Vivamus commodo sodales velit, et pulvinar augue mollis sed. Nam a odio pulvinar libero sodales dignissim. Quisque blandit tempor tellus.\n\nEtiam scelerisque imperdiet odio, id cursus diam tempus quis. Nam a odio pulvinar libero.',
         linkedin: 'https://www.linkedin.com/',
       },
     ],
@@ -124,6 +170,26 @@ export const fr = {
   skills: {
     title: 'Nos savoir-faire',
     categories: [
+      {
+        title: 'Design',
+        items: [
+          {
+            title: 'Recherche utilisateur',
+            description:
+              "Enquête terrain, diagnostic, ateliers d'idéation, tests et entretiens utilisateurs",
+          },
+          {
+            title: 'Conception UX/UI',
+            description:
+              'Expérience et interface utilisateur, prototypage, design system',
+          },
+          {
+            title: 'Design graphique',
+            description:
+              'Identité visuelle, supports graphiques numériques et imprimés',
+          },
+        ],
+      },
       {
         title: 'Produit',
         items: [
@@ -150,37 +216,17 @@ export const fr = {
           {
             title: 'Architecture',
             description:
-              'Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité',
+              'Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité.',
           },
           {
             title: 'Delivery',
             description:
-              'Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards',
+              'Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards.',
           },
           {
             title: 'Intelligence artificielle',
             description:
-              'Intégration d’outils IA, tout en gardant la main sur vos données',
-          },
-        ],
-      },
-      {
-        title: 'Design',
-        items: [
-          {
-            title: 'Recherche utilisateur',
-            description:
-              "Enquête terrain, diagnostic, ateliers d'idéation, tests et entretiens utilisateurs",
-          },
-          {
-            title: 'Conception UX/UI',
-            description:
-              'Expérience et interface utilisateur, prototypage, design system',
-          },
-          {
-            title: 'Design graphique',
-            description:
-              'Identité visuelle, supports graphiques numériques et imprimés',
+              'Intégration d’outils IA, tout en gardant la main sur vos données.',
           },
         ],
       },
