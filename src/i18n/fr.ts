@@ -148,7 +148,7 @@ export const fr = {
         image: 'sylvain.png' as const,
         name: 'Sylvain Aubry',
         role: 'Designer',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie lacinia augue, non aliquet diam euismod quis. Vivamus commodo sodales velit, et pulvinar augue mollis sed. Nam a odio pulvinar libero sodales dignissim. Quisque blandit tempor tellus.\n\nEtiam scelerisque imperdiet odio, id cursus diam tempus quis. Nam a odio pulvinar libero.',
+        bio: 'Designer UX/UI formé à une approche globale du design, Sylvain est passionné par les phases d’enquêtes et de recherches utilisateurs qui impliquent une forme d’immersion dans une situation sociale et des pratiques spécifiques.\n\nSylvain apporte également un soin et une exigence particulière à la conception graphique des interfaces grâce à ses compétences en design graphique.',
         linkedin: 'https://www.linkedin.com/',
       },
       {
@@ -216,17 +216,17 @@ export const fr = {
           {
             title: 'Architecture',
             description:
-              'Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité',
+              'Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité.',
           },
           {
             title: 'Delivery',
             description:
-              'Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards',
+              'Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards.',
           },
           {
             title: 'Intelligence artificielle',
             description:
-              'Intégration d’outils IA, tout en gardant la main sur vos données',
+              'Intégration d’outils IA, tout en gardant la main sur vos données.',
           },
         ],
       },

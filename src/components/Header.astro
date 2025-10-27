@@ -1,7 +1,9 @@
 ---
 import type { Translations } from '../i18n/fr';
+import { config } from '../config/config';
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
+const { isProduction } = config;
 ---
 
 <header class="sticky top-0 z-50 bg-white w-full">
@@ -14,25 +16,29 @@ const { translations } = Astro.props as Props;
     >
       {translations.site.title}
     </a>
-    <nav class="hidden md:flex items-center gap-12 cursor-pointer">
-      <a
-        href="#projects"
-        class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
-      >
-        {translations.nav.projects}
-      </a>
-      <a
-        href="#collective"
-        class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
-      >
-        {translations.nav.collective}
-      </a>
-      <a
-        href="#contact"
-        class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
-      >
-        {translations.nav.contact}
-      </a>
-    </nav>
+    {
+      !isProduction && (
+        <nav class="hidden md:flex items-center gap-12 cursor-pointer">
+          <a
+            href="#projects"
+            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
+          >
+            {translations.nav.projects}
+          </a>
+          <a
+            href="#collective"
+            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
+          >
+            {translations.nav.collective}
+          </a>
+          <a
+            href="#contact"
+            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
+          >
+            {translations.nav.contact}
+          </a>
+        </nav>
+      )
+    }
   </div>
 </header>
