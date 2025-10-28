@@ -217,12 +217,12 @@ export const fr = {
           {
             title: 'Architecture',
             description:
-              'Concevoir la stratégie technique pour les besoins et contraintes du projet, pensée pour la performance et l’évolutivité.',
+              'Concevoir la stratégie technique adaptée aux besoins et contraintes du projet, pensée pour la performance et l’évolutivité.',
           },
           {
-            title: 'Delivery',
+            title: 'Code',
             description:
-              'Livraison de valeur continue, en utilisant des technologies open source dans un respect des dernières normes et standards.',
+              'Livraison continue, tests automatisés, méthodologies conformes aux standards et meilleures pratiques de développement.',
           },
           {
             title: 'Intelligence artificielle',

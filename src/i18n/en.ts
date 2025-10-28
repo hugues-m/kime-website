@@ -34,7 +34,7 @@ export const en: Translations = {
       {
         title: 'Respond\nto real needs',
         description:
-          'To design a useful product, it must meet the needs of its users. A design survey is a prerequisite for any act of design. User research based on quantitative and qualitative surveys ....',
+          "To design a useful product, it must meet users' needs. A design survey is a prerequisite for any act of design. User research, based on quantitative and qualitative studies, informs decisions and aligns the product with real-world needs.",
       },
       {
         title: 'Design by iteration,\nwith care',
@@ -148,8 +148,8 @@ export const en: Translations = {
         image: 'sylvain.png' as const,
         name: 'Sylvain Aubry',
         role: 'Designer',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi molestie lacinia augue, non aliquet diam euismod quis. Vivamus commodo sodales velit, et pulvinar augue mollis sed. Nam a odio pulvinar libero sodales dignissim. Quisque blandit tempor tellus.\n\nEtiam scelerisque imperdiet odio, id cursus diam tempus quis. Nam a odio pulvinar libero.',
-        linkedin: 'https://www.linkedin.com/',
+        bio: 'A UX/UI designer trained in a holistic approach to design, Sylvain is passionate about discovery and user research phases that require immersion in social contexts and specific practices.\n\nHe also brings care and high standards to the visual design of interfaces thanks to his graphic design skills.',
+        linkedin: 'https://www.linkedin.com/in/sasylvainaubry/',
       },
       {
         image: 'thibault.png' as const,
@@ -162,8 +162,8 @@ export const en: Translations = {
         image: 'hugues.png' as const,
         name: 'Hugues Maignol',
         role: 'CTO, Developer',
-        bio: 'Entrepreneur, Hugues has founded and supported companies as CTO, from startups to multinationals. He will know how to design the technical architecture that suits your project and lead the team to achieve it.\n\nBetween two coding sessions, you can find him on the tatami or at his piano.',
-        linkedin: 'https://www.linkedin.com/',
+        bio: 'An entrepreneur, Hugues has founded and supported companies as a CTO, from startups to multinationals. He can design the technical architecture suited to your project and lead the team to deliver it.\n\nBetween coding sessions, you can find him on the tatami or at his piano.',
+        linkedin: 'https://www.linkedin.com/in/huguesmaignol/',
       },
     ],
   },
@@ -219,9 +219,9 @@ export const en: Translations = {
               'Design technical strategy for project needs and constraints, built for performance and scalability',
           },
           {
-            title: 'Delivery',
+            title: 'Code',
             description:
-              'Continuous value delivery, using open source technologies while respecting latest standards and best practices',
+              'Continuous delivery, automated tests, methodologies aligned with standards and best practices',
           },
           {
             title: 'Artificial intelligence',
