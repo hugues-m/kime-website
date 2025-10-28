@@ -10,6 +10,7 @@ import {
 } from '@lucide/astro';
 
 export const fr = {
+  darkMode: false,
   site: {
     title: 'KIME',
     description: 'Design et développement de produits numériques',
@@ -149,7 +150,7 @@ export const fr = {
         name: 'Sylvain Aubry',
         role: 'Designer',
         bio: 'Designer UX/UI formé à une approche globale du design, Sylvain est passionné par les phases d’enquêtes et de recherches utilisateurs qui impliquent une forme d’immersion dans une situation sociale et des pratiques spécifiques.\n\nSylvain apporte également un soin et une exigence particulière à la conception graphique des interfaces grâce à ses compétences en design graphique.',
-        linkedin: 'https://www.linkedin.com/',
+        linkedin: 'https://www.linkedin.com/in/sasylvainaubry/',
       },
       {
         image: 'thibault.png' as const,
@@ -163,7 +164,7 @@ export const fr = {
         name: 'Hugues Maignol',
         role: 'CTO, Développeur',
         bio: "Entrepreneur, Hugues a fondé et accompagné en tant que CTO des entreprises, de la startup à la multinationale. Il saura concevoir l'architecture technique qui convient à votre projet et mener l'équipe pour le réaliser.\n\nEntre deux sessions de code, vous pouvez le trouver sur les tatami ou devant son piano.",
-        linkedin: 'https://www.linkedin.com/',
+        linkedin: 'https://www.linkedin.com/in/huguesmaignol/',
       },
     ],
   },

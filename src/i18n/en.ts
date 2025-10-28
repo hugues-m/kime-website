@@ -11,6 +11,7 @@ import {
 import type { Translations } from './fr';
 
 export const en: Translations = {
+  darkMode: false,
   site: {
     title: 'KIME',
     description: 'Design and development of digital products',

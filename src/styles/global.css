@@ -32,6 +32,37 @@ body {
   margin: 0;
 }
 
+/* Dark mode overrides (scoped by .dark on body) */
+body.dark {
+  background-color: #0b0b10;
+  color: #e6e6f0;
+}
+
+.dark .text-primary {
+  color: #e6e6f0;
+}
+.dark .text-primary-light {
+  color: #a0a0b8;
+}
+.dark .text-accent {
+  color: #67e8f9;
+}
+.dark .bg-background-grey {
+  background-color: #1a1a24;
+}
+.dark .bg-background-light {
+  background-color: #13131a;
+}
+.dark .bg-white {
+  background-color: #0b0b10;
+}
+.dark .text-white {
+  color: #e6e6f0;
+}
+.dark .border-stroke-default {
+  border-color: #3a3a46;
+}
+
 .font-title {
   font-family: var(--font-family-title);
 }

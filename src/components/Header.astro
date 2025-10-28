@@ -14,7 +14,7 @@ const { isProduction } = config;
       href="#top"
       class="font-title font-bold px-4 py-6 text-base text-primary"
     >
-      {translations.site.title}
+      {translations.site.title}{translations.darkMode ? ' MODE SOMBRE 💀' : ''}
     </a>
     {
       !isProduction && (

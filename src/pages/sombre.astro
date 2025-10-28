@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HomePage from '../components/HomePage.astro';
+import { darkFr } from '../i18n/dark/darkFr';
+
+const translations = darkFr;
+---
+
+<Layout
+  title={translations.site.title}
+  lang="fr"
+  description={translations.site.description}
+  bodyClass="dark"
+>
+  <HomePage translations={translations} />
+</Layout>
