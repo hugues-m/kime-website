@@ -6,9 +6,21 @@ type Props = {
   lang: string;
   description?: string;
   bodyClass?: string;
+  ogImage?: string;
+  ogUrl?: string;
 };
 
-const { title, lang, description, bodyClass } = Astro.props as Props;
+const { title, lang, description, bodyClass, ogImage, ogUrl } =
+  Astro.props as Props;
+
+const siteUrl = ogUrl || Astro.url.href;
+const siteOrigin = Astro.url.origin;
+const imageUrl = ogImage
+  ? ogImage.startsWith('http')
+    ? ogImage
+    : `${siteOrigin}${ogImage}`
+  : `${siteOrigin}/og-image.png`;
+const siteName = 'KIME';
 ---
 
 <!doctype html>
@@ -33,6 +45,25 @@ const { title, lang, description, bodyClass } = Astro.props as Props;
       href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,700&f[]=synonym@400,500,600,700&display=block"
     />
     <title>{title}</title>
+
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={imageUrl} />
+
+    {/* Additional meta tags */}
+    <meta name="theme-color" content="#00004d" />
   </head>
   <body id="top" class={bodyClass}>
     <slot />
