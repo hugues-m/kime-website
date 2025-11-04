@@ -163,7 +163,7 @@ export const fr = {
         image: 'hugues.png' as const,
         name: 'Hugues Maignol',
         role: 'CTO, Développeur',
-        bio: "Entrepreneur, Hugues a fondé et accompagné en tant que CTO des entreprises, de la startup à la multinationale. Il saura concevoir l'architecture technique qui convient à votre projet et mener l'équipe pour le réaliser.\n\nEntre deux sessions de code, vous pouvez le trouver sur les tatami ou devant son piano.",
+        bio: "Entrepreneur et CTO expérimenté, Hugues a accompagné des entreprises de la startup à la multinationale. Il conçoit des architectures techniques adaptées à chaque projet et dirige les équipes de développement pour les concrétiser.\n\nIl privilégie des pratiques de développement qui favorisent la qualité et la maintenabilité, la collaboration et un environnement de travail serein.",
         linkedin: 'https://www.linkedin.com/in/huguesmaignol/',
       },
     ],
@@ -227,7 +227,7 @@ export const fr = {
           {
             title: 'Intelligence artificielle',
             description:
-              'Intégration d’outils IA, tout en gardant la main sur vos données.',
+              'Intégration d’outils IA, en respectant vos contraintes et en gardant la main sur vos données.',
           },
         ],
       },
