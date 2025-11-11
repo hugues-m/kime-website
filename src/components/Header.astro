@@ -1,6 +1,9 @@
 ---
 import type { Translations } from '../i18n/fr';
 import { config } from '../config/config';
+import { Menu, X } from '@lucide/astro';
+import Hr from './Hr.astro';
+
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
 const { isProduction } = config;
@@ -8,37 +11,193 @@ const { isProduction } = config;
 
 <header class="sticky top-0 z-50 bg-white w-full">
   <div
-    class="container mx-auto flex items-center justify-between px-4 max-w-[1440px]"
+    class="container mx-auto flex items-center justify-between px-4 md:px-[72px] max-w-[1440px] py-6 md:py-8"
   >
-    <a
-      href="#top"
-      class="font-title font-bold px-4 py-6 text-base text-primary"
-    >
-      {translations.site.title}{translations.darkMode ? ' MODE SOMBRE 💀' : ''}
-    </a>
-    {
-      !isProduction && (
-        <nav class="hidden md:flex items-center gap-12 cursor-pointer">
-          <a
-            href="#projects"
-            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
+    {/* Mobile Header */}
+    <div class="flex md:hidden items-center justify-between w-full">
+      <div class="flex gap-3 items-center">
+        <div class="w-4 h-4 bg-accent rounded-sm"></div>
+        <a
+          href="#kime"
+          class="font-title font-bold text-[20px] text-accent leading-[22px]"
+        >
+          {translations.site.title}
+        </a>
+      </div>
+      <details class="relative" id="mobile-menu">
+        <summary class="list-none cursor-pointer">
+          <div
+            class="bg-background-grey rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center"
           >
-            {translations.nav.projects}
-          </a>
-          <a
-            href="#collective"
-            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
-          >
-            {translations.nav.collective}
-          </a>
-          <a
-            href="#contact"
-            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
-          >
-            {translations.nav.contact}
-          </a>
-        </nav>
-      )
-    }
+            <Menu class="w-4 h-4 text-primary" />
+          </div>
+        </summary>
+        <div
+          class="fixed inset-0 bg-white z-50 pt-6 pb-[72px] px-4 flex flex-col gap-8"
+        >
+          {/* Menu Header */}
+          <div class="flex items-center justify-between h-[40px]">
+            <a
+              href="#kime"
+              class="flex gap-3 items-center cursor-pointer"
+              data-menu-link
+            >
+              <div class="w-[15px] h-[14px] bg-accent rounded-sm"></div>
+              <p
+                class="font-title font-bold text-[20px] text-accent leading-[22px]"
+              >
+                {translations.site.title}
+              </p>
+            </a>
+            <button
+              type="button"
+              class="cursor-pointer bg-white rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center border-0"
+              data-menu-close
+            >
+              <X class="w-4 h-4 text-primary" />
+            </button>
+          </div>
+          <Hr className="w-full" />
+          {/* Menu Links */}
+          <div class="flex flex-col gap-8">
+            <a
+              href="#projects"
+              class="flex gap-3 items-center text-[20px] font-medium font-body text-primary leading-[30px]"
+              data-menu-link
+            >
+              <div class="w-4 h-4 bg-accent rounded-sm"></div>
+              {translations.nav.projects}
+            </a>
+            <Hr className="w-full" />
+            <a
+              href="#collective"
+              class="flex gap-3 items-center text-[20px] font-medium font-body text-primary leading-[30px]"
+              data-menu-link
+            >
+              <div class="w-4 h-4 bg-accent rounded-sm"></div>
+              {translations.nav.collective}
+            </a>
+            <Hr className="w-full" />
+            {/* Contact Section */}
+            <div class="flex flex-col gap-2">
+              <p
+                class="font-title font-bold text-[20px] text-secondary leading-[30px]"
+              >
+                {translations.contact.title}
+              </p>
+              <div class="flex flex-col">
+                <p
+                  class="font-body font-medium text-[20px] text-secondary leading-[30px]"
+                >
+                  {translations.contact.emailLabel}
+                </p>
+                <a
+                  href={`mailto:${translations.contact.email}`}
+                  class="font-body font-medium text-[20px] text-accent underline leading-[30px] inline-flex items-center gap-1"
+                >
+                  {translations.contact.email}
+                  <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    {/* Desktop Header */}
+    <div class="hidden md:flex items-center justify-between w-full">
+      <div class="flex gap-3 items-center">
+        <div class="w-4 h-4 bg-accent rounded-sm"></div>
+        <a
+          href="#kime"
+          class="font-title font-bold text-base text-accent leading-[22px]"
+        >
+          {translations.site.title} · {translations.site.description}
+        </a>
+      </div>
+      {
+        !isProduction && (
+          <nav class="flex items-center gap-3">
+            <a
+              href="#projects"
+              class="bg-background-grey rounded-full px-3 py-3 text-base text-primary hover:text-accent transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+            >
+              <div class="w-4 h-4 bg-accent rounded-sm" />
+              {translations.nav.projects}
+            </a>
+            <a
+              href="#collective"
+              class="bg-background-grey rounded-full px-3 py-3 text-base text-primary hover:text-accent transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+            >
+              <div class="w-4 h-4 bg-accent rounded-sm" />
+              {translations.nav.collective}
+            </a>
+            <a
+              href="#contact"
+              class="bg-background-grey rounded-full px-3 py-3 text-base text-primary hover:text-accent transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              {translations.nav.contact}
+            </a>
+          </nav>
+        )
+      }
+    </div>
   </div>
 </header>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details summary::marker {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const closeButton = document.querySelector('[data-menu-close]');
+    const menuLinks = document.querySelectorAll('[data-menu-link]');
+    const menuDetails = document.getElementById('mobile-menu');
+
+    const closeMenu = () => {
+      if (menuDetails) {
+        menuDetails.removeAttribute('open');
+      }
+    };
+
+    if (closeButton) {
+      closeButton.addEventListener('click', closeMenu);
+    }
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  });
+</script>

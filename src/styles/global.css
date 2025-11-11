@@ -5,12 +5,13 @@
     var(--Font-Famliy-Body, 'Synonym Variable'), 'Synonym', system-ui,
     sans-serif;
   --font-family-title:
-    var(--Font-Famliy-Title, 'General Sans Variable'), 'General Sans',
-    system-ui, sans-serif;
+    var(--Font-Famliy-Title, 'Hanken Grotesk'), 'Hanken Grotesk', system-ui,
+    sans-serif;
 
-  --color-primary: var(--Font-Color-Body, #00004d);
-  --color-primary-light: #949494;
-  --color-accent: var(--Font-Color-Main, #0a94b6);
+  --color-primary: #322b29;
+  --color-primary-light: #8d827e;
+  --color-secondary: #8d827e;
+  --color-accent: #00b2a9;
   --color-background-grey: #f5f5f5;
   --color-background-light: #f5f5fe;
   --color-stroke-default: #cecece;
@@ -77,5 +78,16 @@ body.dark {
 .strong-semibold {
   strong {
     font-weight: 600;
+  }
+}
+
+/* Scroll offset for anchor links to account for sticky header */
+[id] {
+  scroll-margin-top: 88px; /* Mobile: py-6 (24px) + content (40px) + py-6 (24px) = 88px */
+}
+
+@media (min-width: 768px) {
+  [id] {
+    scroll-margin-top: 104px; /* Desktop: py-8 (32px) + content (40px) + py-8 (32px) = 104px */
   }
 }

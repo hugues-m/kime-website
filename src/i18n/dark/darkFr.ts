@@ -17,14 +17,16 @@ export const darkFr: Translations = {
     description: 'Aliénation et complication numériques avec un sourire forcé',
   },
   nav: {
-    projects: 'Projets',
-    collective: 'Membres',
-    contact: 'Plainte',
+    projects: 'Sélection de projets',
+    collective: 'Notre collectif',
+    contact: 'Nous contacter',
   },
   hero: {
     title: 'Aliénation et complexité numériques, avec panache',
-    intro:
-      "Kime est un trio qui transforme des besoins clairs en obstacles impénétrables : <strong>un product manager pressé, un développeur collectionneur de dettes, et un designer amoureux des maquettes jamais testées</strong>. Grâce à cette synergie douteuse, nous produisons <strong>des outils aussi opaques qu'inoubliables</strong>.",
+    introA:
+      'Kime est un trio qui transforme des besoins clairs en obstacles impénétrables : un product manager pressé, un développeur collectionneur de dettes, et un designer amoureux des maquettes jamais testées.',
+    introB:
+      "Grâce à cette synergie douteuse, nous produisons des outils aussi opaques qu'inoubliables.",
     mission:
       "Nous militons pour un numérique aliénant, énergivore et hermétique, où l'utilisateur est surtout un mythe pratique.",
   },
@@ -56,16 +58,15 @@ export const darkFr: Translations = {
   offers: {
     title: 'Nos offres',
     intro:
-      'Nous proposons plusieurs façons élégantes de compliquer votre quotidien :',
-    introItems: [
-      'Production : vous avez une idée claire ? Nous la rendons floue, coûteuse et difficile à maintenir.',
-      'Conseil : vous avez une équipe ? Nous ajoutons des processus, retirons la vision et sacralisons les réunions.',
-    ],
+      "Nous proposons différents type d'interventions en fonction de vos besoins. Notre collectif peut également s'adapter en fonction des projets qui lui sont confiées et des besoins en terme de compétences, grâce à un réseau d'indépendants de confiance.",
     list: [
       {
         number: '01' as const,
         type: 'Production',
         title: 'Complication et dégradation de produits numériques',
+        label: 'Offre 01 - Production',
+        shortDescription:
+          'Vous avez une idée claire ? Nous la rendons floue, coûteuse et difficile à maintenir.',
         description:
           "Nous clarifions surtout nos propres priorités. Pas d'enquête, mais des hypothèses musclées. Nous <strong>prototypons sans mesurer</strong> et <strong>développons en cycles chaotiques</strong>. À chaque étape, nous nous éloignons méthodiquement des besoins réels.",
         tags: [
@@ -79,8 +80,11 @@ export const darkFr: Translations = {
         number: '02' as const,
         type: 'Conseil',
         title: "Désorganisation d'équipes et dilution des responsabilités",
+        label: 'Offre 02 - Conseil',
+        shortDescription:
+          'Vous avez déjà une équipe ? Nous ajoutons des processus, retirons la vision et sacralisons les réunions.',
         description:
-          'Votre équipe fonctionne encore un peu ? Nous <strong>instaurons des rituels lourds</strong>, <strong>réécrivons la vision chaque semaine</strong> et <strong>uniformisons le chaos</strong>. Résultat : personne ne sait qui décide, mais tout le monde valide.',
+          'Votre équipe fonctionne encore un peu ? Nous <strong>instaurons des rituels lourds</strong>, <strong>réécrivons la vision chaque semaine</strong> et <strong>uniformisons le chaos</strong>. Résultat : personne ne sait qui décide, mais tout le monde valide.',
         tags: [
           { icon: Users, label: 'Surenchère de recrutements' },
           { icon: SquareChartGantt, label: 'Processionnite aiguë' },
@@ -89,8 +93,6 @@ export const darkFr: Translations = {
         ],
       },
     ],
-    outro:
-      "Notre collectif s’étend à l'infini grâce à un réseau d'indépendants mystérieux, parfait pour ne jamais savoir qui fait quoi.",
   },
   projects: {
     title: 'Sélection de projets',
@@ -133,7 +135,7 @@ export const darkFr: Translations = {
         image: 'nutriscore.png' as const,
         imageAlt: 'Nutriscore approximatif',
         backgroundColor: '#f4ed95',
-        title: "Plateforme d'expérimentation confuse",
+        title: "Plateforme d'expérience confuse",
         description:
           'Des applications web parfaites pour tester des hypothèses jamais vérifiées, en temps réel et en désordre. Idéal pour valider ce qui nous arrange.',
         collaboration:
@@ -175,17 +177,17 @@ export const darkFr: Translations = {
         title: 'Design',
         items: [
           {
-            title: 'Recherche décorative',
+            title: 'Recherche',
             description:
               'Ateliers sans suites, tests symboliques, entretiens qui orientent les réponses',
           },
           {
-            title: 'Conception UI d’abord',
+            title: 'Conception UX/UI',
             description:
               'Pixel-perfect avant le problème, prototypage sans retour, systèmes figés',
           },
           {
-            title: 'Graphisme envahissant',
+            title: 'Conception graphique',
             description:
               'Identité omniprésente, contrastes douteux, lisibilité optionnelle',
           },
