@@ -57,7 +57,7 @@ export const fr = {
   offers: {
     title: 'Nos offres',
     intro:
-      "Nous proposons différents type d'interventions en fonction de vos besoins. Notre collectif peut également s'adapter en fonction des projets qui lui sont confiées et des besoins en terme de compétences, grâce à un réseau d'indépendants de confiance.",
+      "Nous proposons différents types d’interventions en fonction de vos besoins. Notre collectif peut également s'adapter en fonction des projets qui lui sont confiées et des besoins en terme de compétences, grâce à un réseau d'indépendants de confiance.",
     list: [
       {
         number: '01' as const,

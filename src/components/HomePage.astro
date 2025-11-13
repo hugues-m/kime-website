@@ -12,11 +12,7 @@ import Header from './Header.astro';
 import { config } from '../config/config';
 import { Image } from 'astro:assets';
 import ArrowIcon from '../assets/icons/arrow.svg';
-import CloseIcon from '../assets/icons/close.svg';
 import CollectiveIcon from '../assets/icons/collective.svg';
-import ContactIcon from '../assets/icons/contact.svg';
-import KimeIcon from '../assets/icons/kime.svg';
-import MenuIcon from '../assets/icons/menu.svg';
 import OffersIcon from '../assets/icons/offers.svg';
 import PilliersIcon from '../assets/icons/pilliers.svg';
 import ProjectsIcon from '../assets/icons/projects.svg';
@@ -40,16 +36,16 @@ const { isProduction } = config;
 <div class="min-h-screen bg-white flex flex-col items-start">
   <Header translations={translations} />
   <main class="container mx-auto max-w-[1440px] w-full">
+    <h2
+      class="font-title font-bold text-[20px] text-accent leading-[30px] md:leading-[22px] header-xl-hidden px-4 md:px-[72px]"
+    >
+      {translations.hero.title}
+    </h2>
     {/* Hero Section */}
     <section
       class="w-full pt-6 pb-[120px] md:pt-[72px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-16 md:gap-[90px]"
     >
       <div class="flex flex-col gap-6 md:gap-8">
-        <p
-          class="font-title font-medium text-[20px] text-accent leading-[30px] mb-16 md:hidden"
-        >
-          {translations.hero.title}
-        </p>
         <div class="flex flex-col gap-8 md:gap-[32px]">
           <p
             class="font-body font-semibold text-[28px] md:text-[52px] leading-normal tracking-[0.56px] md:tracking-[1.04px]"
@@ -76,7 +72,7 @@ const { isProduction } = config;
             class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
           >
             <div class="flex gap-3 items-center">
-              <div class="w-4 h-4 bg-accent rounded-sm" />
+              <PilliersIcon class="w-4 h-4 text-accent shrink-0" />
               <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
                 {translations.approach.title}
               </p>
@@ -105,14 +101,14 @@ const { isProduction } = config;
             class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
           >
             <div class="flex gap-3 items-center">
-              <div class="w-4 h-4 bg-accent rounded-sm" />
+              <OffersIcon class="w-4 h-4 text-accent shrink-0" />
               <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
                 {translations.offers.title}
               </p>
             </div>
             <div class="flex flex-col gap-16 md:gap-16">
               <p class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]">
-                {translations.offers.intro} {translations.offers.outro}
+                {translations.offers.intro}
               </p>
               <div class="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-16">
                 {translations.offers.list.map((offer) => (
@@ -156,7 +152,7 @@ const { isProduction } = config;
             <Hr />
             <div class="flex flex-col gap-8 md:gap-12">
               <div class="flex gap-3 items-center">
-                <div class="w-4 h-4 bg-accent rounded-sm" />
+                <ProjectsIcon class="w-4 h-4 text-accent shrink-0" />
                 <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
                   {translations.projects.title}
                 </p>
@@ -252,19 +248,9 @@ const { isProduction } = config;
                     class="font-body font-medium text-[20px] md:text-[28px] text-accent underline leading-[30px] md:leading-[40px] inline-flex items-center gap-1"
                   >
                     {translations.contact.email}
-                    <svg
-                      class="w-6 h-6 md:w-[30px] md:h-[30px]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
+                    <span class="p-[6px]">
+                      <ArrowIcon class="w-3 h-3 md:w-4 md:h-4" />
+                    </span>
                   </a>
                 </div>
               </div>
@@ -279,7 +265,7 @@ const { isProduction } = config;
             <Hr />
             <div class="flex flex-col gap-8 md:gap-12">
               <div class="flex gap-3 items-center">
-                <div class="w-4 h-4 bg-accent rounded-sm" />
+                <CollectiveIcon class="w-4 h-4 text-accent shrink-0" />
                 <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
                   {translations.collective.title}
                 </p>
@@ -287,7 +273,7 @@ const { isProduction } = config;
               <div class="flex flex-col md:grid md:grid-cols-3 gap-12 md:gap-16">
                 {translations.collective.members.map((member) => (
                   <div class="flex flex-col gap-6 md:gap-6">
-                    <div class="w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-background-light rounded-[6px]">
+                    <div class="w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-background-grey rounded-[6px]">
                       <Image
                         src={imageMap[member.image]}
                         alt={member.name}
@@ -312,24 +298,14 @@ const { isProduction } = config;
                       href={member.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="flex gap-1 items-center cursor-pointer"
+                      class="text-accent flex items-center cursor-pointer"
                     >
-                      <span class="font-title font-semibold text-[16px] text-accent underline">
+                      <span class="font-title font-semibold text-[16px] underline">
                         Linkedin
                       </span>
-                      <svg
-                        class="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                        />
-                      </svg>
+                      <span class="p-2">
+                        <ArrowIcon class="w-2 h-2" />
+                      </span>
                     </a>
                   </div>
                 ))}
@@ -345,7 +321,7 @@ const { isProduction } = config;
             <Hr />
             <div class="flex flex-col gap-8 md:gap-12">
               <div class="flex gap-3 items-center">
-                <div class="w-4 h-4 bg-accent rounded-sm" />
+                <SkillsIcon class="w-4 h-4 text-accent shrink-0" />
                 <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
                   {translations.skills.title}
                 </p>
@@ -353,7 +329,6 @@ const { isProduction } = config;
               <div class="flex flex-col md:grid md:grid-cols-3 gap-10 md:gap-16">
                 {translations.skills.categories.map((category) => (
                   <div class="flex flex-col gap-4 md:gap-4">
-                    <Hr />
                     <h3 class="font-title font-bold text-[20px] text-secondary leading-[30px]">
                       {category.title}
                     </h3>
@@ -403,19 +378,9 @@ const { isProduction } = config;
             class="font-body font-medium text-[20px] md:text-[28px] text-accent underline leading-[30px] md:leading-[40px] inline-flex items-center gap-1"
           >
             {translations.contact.email}
-            <svg
-              class="w-6 h-6 md:w-[30px] md:h-[30px]"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              ></path>
-            </svg>
+            <span class="p-[6px]">
+              <ArrowIcon class="w-3 h-3 md:w-4 md:h-4" />
+            </span>
           </a>
         </div>
       </div>

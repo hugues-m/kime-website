@@ -1,12 +1,14 @@
 ---
 import type { Translations } from '../i18n/fr';
 import { config } from '../config/config';
-import { Menu, X } from '@lucide/astro';
 import Hr from './Hr.astro';
 import KimeIcon from '../assets/icons/kime.svg';
 import ProjectsIcon from '../assets/icons/projects.svg';
 import CollectiveIcon from '../assets/icons/collective.svg';
 import ContactIcon from '../assets/icons/contact.svg';
+import CloseIcon from '../assets/icons/close.svg';
+import MenuIcon from '../assets/icons/menu.svg';
+import ArrowIcon from '../assets/icons/arrow.svg';
 
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
@@ -19,21 +21,19 @@ const { isProduction } = config;
   >
     {/* Mobile Header */}
     <div class="flex md:hidden items-center justify-between w-full">
-      <div class="flex gap-3 items-center">
+      <a
+        href="#kime"
+        class="font-title font-bold text-[20px] text-accent leading-[22px] flex gap-3 items-center"
+      >
         <KimeIcon class="w-4 h-4 text-accent shrink-0" />
-        <a
-          href="#kime"
-          class="font-title font-bold text-[20px] text-accent leading-[22px]"
-        >
-          {translations.site.title}
-        </a>
-      </div>
+        {translations.site.title}
+      </a>
       <details class="relative" id="mobile-menu">
         <summary class="list-none cursor-pointer">
           <div
             class="bg-background-grey rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center"
           >
-            <Menu class="w-4 h-4 text-primary" />
+            <MenuIcon class="w-4 h-4 text-primary" />
           </div>
         </summary>
         <div
@@ -43,22 +43,20 @@ const { isProduction } = config;
           <div class="flex items-center justify-between h-[40px]">
             <a
               href="#kime"
-              class="flex gap-3 items-center cursor-pointer"
+              class="flex gap-3 items-center cursor-pointer text-accent"
               data-menu-link
             >
-              <div class="w-[15px] h-[14px] bg-accent rounded-sm"></div>
-              <p
-                class="font-title font-bold text-[20px] text-accent leading-[22px]"
-              >
+              <KimeIcon class="w-4 h4" />
+              <h1 class="font-title font-bold text-[20px] leading-[22px]">
                 {translations.site.title}
-              </p>
+              </h1>
             </a>
             <button
               type="button"
               class="cursor-pointer bg-white rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center border-0"
               data-menu-close
             >
-              <X class="w-4 h-4 text-primary" />
+              <CloseIcon class="w-4 h-4 text-primary" />
             </button>
           </div>
           <Hr className="w-full" />
@@ -78,7 +76,7 @@ const { isProduction } = config;
               class="flex gap-3 items-center text-[20px] font-medium font-body text-primary leading-[30px]"
               data-menu-link
             >
-              <div class="w-4 h-4 bg-accent rounded-sm"></div>
+              <CollectiveIcon class="w-[14px] h-[14px] text-accent" />
               {translations.nav.collective}
             </a>
             <Hr className="w-full" />
@@ -100,19 +98,8 @@ const { isProduction } = config;
                   class="font-body font-medium text-[20px] text-accent underline leading-[30px] inline-flex items-center gap-1"
                 >
                   {translations.contact.email}
-                  <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    ></path>
-                  </svg>
+
+                  <span class="p-[6px]"> <ArrowIcon class="w-3 h-3" /></span>
                 </a>
               </div>
             </div>
@@ -123,15 +110,16 @@ const { isProduction } = config;
 
     {/* Desktop Header */}
     <div class="hidden md:flex items-center justify-between w-full">
-      <div class="flex gap-3 items-center">
+      <a
+        href="#kime"
+        class="flex gap-3 items-center font-title font-bold text-base text-accent text-[20px] leading-[22px]"
+      >
         <KimeIcon class="w-4 h-4 text-accent shrink-0" />
-        <a
-          href="#kime"
-          class="font-title font-bold text-base text-accent text-[20px] leading-[22px]"
+        {translations.site.title}
+        <span class="hidden header-xl-inline">
+          · {translations.site.description}</span
         >
-          {translations.site.title} · {translations.site.description}
-        </a>
-      </div>
+      </a>
       {
         !isProduction && (
           <nav class="flex items-center gap-3">
