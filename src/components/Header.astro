@@ -3,6 +3,10 @@ import type { Translations } from '../i18n/fr';
 import { config } from '../config/config';
 import { Menu, X } from '@lucide/astro';
 import Hr from './Hr.astro';
+import KimeIcon from '../assets/icons/kime.svg';
+import ProjectsIcon from '../assets/icons/projects.svg';
+import CollectiveIcon from '../assets/icons/collective.svg';
+import ContactIcon from '../assets/icons/contact.svg';
 
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
@@ -16,7 +20,7 @@ const { isProduction } = config;
     {/* Mobile Header */}
     <div class="flex md:hidden items-center justify-between w-full">
       <div class="flex gap-3 items-center">
-        <div class="w-4 h-4 bg-accent rounded-sm"></div>
+        <KimeIcon class="w-4 h-4 text-accent shrink-0" />
         <a
           href="#kime"
           class="font-title font-bold text-[20px] text-accent leading-[22px]"
@@ -65,7 +69,7 @@ const { isProduction } = config;
               class="flex gap-3 items-center text-[20px] font-medium font-body text-primary leading-[30px]"
               data-menu-link
             >
-              <div class="w-4 h-4 bg-accent rounded-sm"></div>
+              <ProjectsIcon class="w-[14px] h-[14px] text-accent" />
               {translations.nav.projects}
             </a>
             <Hr className="w-full" />
@@ -120,10 +124,10 @@ const { isProduction } = config;
     {/* Desktop Header */}
     <div class="hidden md:flex items-center justify-between w-full">
       <div class="flex gap-3 items-center">
-        <div class="w-4 h-4 bg-accent rounded-sm"></div>
+        <KimeIcon class="w-4 h-4 text-accent shrink-0" />
         <a
           href="#kime"
-          class="font-title font-bold text-base text-accent leading-[22px]"
+          class="font-title font-bold text-base text-accent text-[20px] leading-[22px]"
         >
           {translations.site.title} · {translations.site.description}
         </a>
@@ -135,33 +139,21 @@ const { isProduction } = config;
               href="#projects"
               class="bg-background-grey rounded-full px-3 py-3 text-base text-primary hover:text-accent transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
             >
-              <div class="w-4 h-4 bg-accent rounded-sm" />
+              <ProjectsIcon class="w-[14px] h-[14px] text-accent" />
               {translations.nav.projects}
             </a>
             <a
               href="#collective"
               class="bg-background-grey rounded-full px-3 py-3 text-base text-primary hover:text-accent transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
             >
-              <div class="w-4 h-4 bg-accent rounded-sm" />
+              <CollectiveIcon class="w-[14px] h-[14px] text-accent" />
               {translations.nav.collective}
             </a>
             <a
               href="#contact"
               class="bg-background-grey rounded-full px-3 py-3 text-base text-primary hover:text-accent transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
             >
-              <svg
-                class="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+              <ContactIcon class="w-[14px] h-[14px] text-accent" />
               {translations.nav.contact}
             </a>
           </nav>

@@ -14,7 +14,7 @@ export const darkFr: Translations = {
   darkMode: true,
   site: {
     title: 'KIME',
-    description: 'Aliénation et complication numériques avec un sourire forcé',
+    description: 'Mode sombre ☠️',
   },
   nav: {
     projects: 'Sélection de projets',
