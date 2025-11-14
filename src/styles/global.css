@@ -8,13 +8,12 @@
     var(--Font-Famliy-Title, 'Hanken Grotesk'), 'Hanken Grotesk', system-ui,
     sans-serif;
 
-  /* NEW GRIS THEME PRINCIPAL FONT: #808282 */
   --color-primary: #232929;
   --color-primary-light: #828383;
   --color-secondary: #828383;
   --color-accent: #00b2a9;
   --color-background-grey: #f7f5f7;
-  --color-background-light: #f7f5fe;
+  --color-background-grey-hover: #E0E1E1;
   --color-stroke-default: #cecece;
   --breakpoint-header-xl: 1256px;
 }
@@ -55,6 +54,9 @@ body.dark {
 }
 .dark .bg-background-grey {
   background-color: #1a1a24;
+}
+.dark .bg-background-grey-hover {
+  background-color: #252530;
 }
 .dark .bg-background-light {
   background-color: #13131a;

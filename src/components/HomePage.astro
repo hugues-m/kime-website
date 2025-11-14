@@ -22,10 +22,26 @@ type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
 
 const imageMap = {
-  'fne.svg': fneImage,
-  'nutriscore.png': nutriscoreImage,
-  'gps.png': gpsImage,
-  'docaposte.png': docaposteImage,
+  'fne.svg': {
+    image: fneImage,
+    backgroundPosition: '50% 50%',
+    backgroundSize: '90% 80%',
+  },
+  'nutriscore.png': {
+    image: nutriscoreImage,
+    backgroundPosition: '50% 50%',
+    backgroundSize: '90% 50%',
+  },
+  'gps.png': {
+    image: gpsImage,
+    backgroundPosition: '50% -20%',
+    backgroundSize: 'contain',
+  },
+  'docaposte.png': {
+    image: docaposteImage,
+    backgroundPosition: '50% 50%',
+    backgroundSize: 'contain',
+  },
   'hugues.png': huguesImage,
   'thibault.png': thibaultImage,
   'sylvain.png': sylvainImage,
@@ -141,7 +157,7 @@ const { isProduction } = config;
                         return (
                           <div class="bg-background-grey px-[14px] py-[10px] md:py-[10px] rounded-[6px] flex gap-2 items-center">
                             <IconComponent class="w-4 h-4 text-primary" />
-                            <p class="font-body font-medium text-[16px] text-primary">
+                            <p class="font-body font-medium text-[14.5px] md:text-[16px] text-primary">
                               {tag.label}
                             </p>
                           </div>
@@ -169,46 +185,58 @@ const { isProduction } = config;
               </div>
 
               {/* Projects */}
-              {translations.projects.list.map((project, index) => (
-                <div
-                  class="flex flex-col md:flex-row gap-6 md:gap-12"
-                  style={index > 0 ? 'margin-top: 64px;' : ''}
-                >
+              {translations.projects.list.map((project, index) => {
+                const imageData = imageMap[project.image];
+                const imageSrc =
+                  typeof imageData === 'object' && 'image' in imageData
+                    ? imageData.image
+                    : imageData;
+                const backgroundPosition =
+                  typeof imageData === 'object' &&
+                  'backgroundPosition' in imageData
+                    ? imageData.backgroundPosition
+                    : '50% 50%';
+                const backgroundSize =
+                  typeof imageData === 'object' && 'backgroundSize' in imageData
+                    ? imageData.backgroundSize
+                    : 'contain';
+                const imageUrl = imageSrc?.src || imageSrc;
+
+                return (
                   <div
-                    class="h-[198px] md:h-[360px] rounded-[4px] flex items-center justify-center w-full md:w-1/2"
-                    style={`background-color: ${project.backgroundColor}`}
+                    class="flex flex-col md:flex-row gap-6 md:gap-12"
+                    style={index > 0 ? 'margin-top: 64px;' : ''}
                   >
-                    <Image
-                      src={imageMap[project.image]}
-                      alt={project.imageAlt}
-                      class="max-w-[131px] md:max-w-[240px] max-h-[131px] md:max-h-[240px] object-cover"
-                      width={390}
-                      height={390}
+                    <div
+                      class="h-[198px] md:h-[360px] rounded-[4px] w-full md:w-1/2 bg-no-repeat"
+                      style={`background-color: ${project.backgroundColor}; background-image: url(${imageUrl}); background-position: ${backgroundPosition}; background-size: ${backgroundSize};`}
+                      role="img"
+                      aria-label={project.imageAlt}
                     />
-                  </div>
-                  <div class="flex flex-col gap-6 md:gap-6 w-full md:w-1/2">
-                    <div class="flex flex-col gap-4 md:gap-4">
-                      <h3 class="font-title font-bold text-[24px] text-primary leading-[34px]">
-                        {project.title}
-                      </h3>
-                      <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
-                        {project.description}
-                      </p>
-                      <p
-                        class="font-body font-semibold text-[14.5px] text-secondary leading-[20px]"
-                        set:html={project.collaboration}
-                      />
+                    <div class="flex flex-col gap-6 md:gap-6 w-full md:w-1/2">
+                      <div class="flex flex-col gap-4 md:gap-4">
+                        <h3 class="font-title font-bold text-[24px] text-primary leading-[34px]">
+                          {project.title}
+                        </h3>
+                        <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
+                          {project.description}
+                        </p>
+                        <p
+                          class="font-body font-semibold text-[14.5px] text-secondary leading-[20px]"
+                          set:html={project.collaboration}
+                        />
+                      </div>
+                      <div class="flex gap-2">
+                        {project.tags.map((tag) => (
+                          <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body font-medium text-[14.5px] text-primary">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div class="flex gap-2">
-                      {project.tags.map((tag) => (
-                        <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body font-medium text-[14.5px] text-primary">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
               {/* CTA */}
               <div class="flex flex-col gap-2 md:gap-2">
