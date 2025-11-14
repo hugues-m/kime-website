@@ -4,316 +4,389 @@ import Hr from './Hr.astro';
 import fneImage from '../assets/images/fne.svg';
 import nutriscoreImage from '../assets/images/nutriscore.png';
 import gpsImage from '../assets/images/gps.png';
-import docaposteImage from '../assets/images/docaposte.jpg';
+import docaposteImage from '../assets/images/docaposte.png';
 import huguesImage from '../assets/images/hugues.png';
 import thibaultImage from '../assets/images/thibault.png';
 import sylvainImage from '../assets/images/sylvain.png';
 import Header from './Header.astro';
 import { config } from '../config/config';
 import { Image } from 'astro:assets';
+import ArrowIcon from '../assets/icons/arrow.svg';
+import CollectiveIcon from '../assets/icons/collective.svg';
+import OffersIcon from '../assets/icons/offers.svg';
+import PilliersIcon from '../assets/icons/pilliers.svg';
+import ProjectsIcon from '../assets/icons/projects.svg';
+import SkillsIcon from '../assets/icons/skills.svg';
 
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
 
 const imageMap = {
-  'fne.svg': fneImage,
-  'nutriscore.png': nutriscoreImage,
-  'gps.png': gpsImage,
-  'docaposte.jpg': docaposteImage,
+  'fne.svg': {
+    image: fneImage,
+    backgroundPosition: '50% 50%',
+    backgroundSize: '90% 80%',
+  },
+  'nutriscore.png': {
+    image: nutriscoreImage,
+    backgroundPosition: '50% 50%',
+    backgroundSize: '90% 50%',
+  },
+  'gps.png': {
+    image: gpsImage,
+    backgroundPosition: '50% -20%',
+    backgroundSize: 'contain',
+  },
+  'docaposte.png': {
+    image: docaposteImage,
+    backgroundPosition: '50% 50%',
+    backgroundSize: 'contain',
+  },
   'hugues.png': huguesImage,
   'thibault.png': thibaultImage,
   'sylvain.png': sylvainImage,
 };
+
+// const imagePositioning = {
+//   'fne.svg': {},
+//   'nutriscore.png': {
+//     bottom: '-50%',
+//   },
+//   'gps.png': {},
+//   'docaposte.png': {},
+// };
+
 const { isProduction } = config;
 ---
 
 <div class="min-h-screen bg-white flex flex-col items-start">
   <Header translations={translations} />
-  <main class="container mx-auto max-w-[1024px] w-full px-4">
-    <section
-      class="w-full py-16 md:py-24 lg:py-[120px] grid grid-cols-12 gap-y-10 justify-center"
+  <main class="container mx-auto max-w-[1440px] w-full">
+    <h2
+      class="font-title font-bold text-[20px] text-accent leading-[30px] md:leading-[22px] header-xl-hidden px-4 md:px-[72px]"
     >
-      <h1
-        class="col-span-12 font-title text-4xl md:text-5xl lg:text-[64px] font-bold text-primary leading-normal tracking-[1.28px]"
-      >
-        {translations.hero.title}
-      </h1>
-      <p
-        class="col-span-12 font-body text-xl md:text-2xl lg:text-[28px] font-medium text-accent leading-normal"
-      >
-        <span set:html={translations.hero.intro} />
-      </p>
-      <p
-        class="col-span-12 font-body text-xl md:text-2xl lg:text-[28px] font-medium text-primary leading-normal"
-      >
-        {translations.hero.mission}
-      </p>
+      {translations.hero.title}
+    </h2>
+    {/* Hero Section */}
+    <section
+      class="w-full pt-6 pb-[120px] md:pt-[72px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-16 md:gap-[90px]"
+    >
+      <div class="flex flex-col gap-6 md:gap-8">
+        <div class="flex flex-col gap-8 md:gap-[32px]">
+          <p
+            class="font-body font-semibold text-[28px] md:text-[52px] leading-normal tracking-[0.56px] md:tracking-[1.04px]"
+          >
+            <span class="text-primary">{translations.hero.introA}</span>
+            <span class="text-primary font-normal"> ↦ </span>
+            <span class="text-secondary">{translations.hero.introB}</span>
+          </p>
+          <p
+            class="font-body font-medium text-[20px] md:text-[28px] leading-[30px] md:leading-[40px]"
+          >
+            {translations.hero.mission}
+          </p>
+        </div>
+      </div>
     </section>
 
     {
       !isProduction && (
         <>
+          {/* Notre approche Section */}
           <section
             id="approach"
-            class="w-full bg-white pb-[120px] grid grid-cols-12 gap-y-12 justify-center"
+            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
           >
-            <div class="col-span-12 flex gap-3 items-center w-full">
-              <div class="w-4 h-4 rotate-45 bg-accent rounded-sm" />
-              <p class="font-title text-base font-semibold text-accent uppercase">
+            <div class="flex gap-3 items-center">
+              <PilliersIcon class="w-4 h-4 text-accent shrink-0" />
+              <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
                 {translations.approach.title}
               </p>
             </div>
-            <div class="col-span-12 grid grid-cols-12 gap-6 items-start w-full">
+            <div class="flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-10">
               {translations.approach.principles.map((principle) => (
-                <div class="col-span-12 md:col-span-6 lg:col-span-3 flex flex-col gap-8 items-start">
+                <div class="flex flex-col gap-6">
                   <Hr />
-                  <div class="flex flex-col gap-3 items-start text-base text-primary">
+                  <div class="flex flex-col gap-3">
                     <p
                       set:text={principle.title}
-                      class="font-body font-bold whitespace-pre-wrap"
+                      class="font-body font-bold text-[20px] text-secondary leading-[30px] whitespace-pre-wrap"
                     />
-                    <p class="font-body font-normal">{principle.description}</p>
+                    <p class="font-body font-normal text-[16px] text-primary leading-[22px] hidden md:block">
+                      {principle.description}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
           </section>
 
+          {/* Nos offres Section */}
           <section
             id="offers"
-            class="w-full pb-[120px] grid grid-cols-12 gap-12 justify-center"
+            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
           >
-            <div class="col-span-12 flex gap-3 items-center w-full">
-              <div class="w-3 h-3 rotate-45 bg-accent rounded-sm" />
-              <p class="font-title text-base font-semibold text-accent uppercase">
+            <div class="flex gap-3 items-center">
+              <OffersIcon class="w-4 h-4 text-accent shrink-0" />
+              <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
                 {translations.offers.title}
               </p>
             </div>
-            <p class="col-span-12 font-body text-xl font-medium text-primary">
-              {translations.offers.intro}
-            </p>
-            <ul class="col-span-12 font-body text-base text-primary list-disc ms-6">
-              {translations.offers.introItems.map((item) => (
-                <li class="mb-2">{item}</li>
-              ))}
-            </ul>
-            <p class="col-span-12 font-body text-xl font-medium text-primary">
-              {translations.offers.outro}
-            </p>
-            <div class="col-span-12 grid grid-cols-12 gap-6 items-start w-full strong-semibold">
-              {translations.offers.list.map((offer) => (
-                <div class="col-span-12 md:col-span-6 flex flex-col gap-6 items-start">
-                  <Hr />
-                  <div class="flex flex-col gap-4">
-                    <p class="font-body text-sm font-semibold text-accent">
-                      Offre {offer.number} - {offer.type}
+            <div class="flex flex-col gap-16 md:gap-16">
+              <p class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]">
+                {translations.offers.intro}
+              </p>
+              <div class="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-16">
+                {translations.offers.list.map((offer) => (
+                  <div class="flex flex-col gap-6 md:gap-6">
+                    <Hr />
+                    <div class="flex flex-col gap-2 md:gap-2">
+                      <p class="font-title font-bold text-[20px] text-accent leading-[30px]">
+                        {offer.label}
+                      </p>
+                      <p class="font-title font-bold text-[24px] md:text-[28px] text-primary leading-[34px] md:leading-normal tracking-[0.56px]">
+                        {offer.title}
+                      </p>
+                    </div>
+                    <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
+                      {offer.shortDescription}
                     </p>
-                    <p class="font-title text-2xl font-bold text-primary">
-                      {offer.title}
-                    </p>
+                    <div class="flex flex-wrap gap-2 items-start">
+                      {offer.tags.map((tag) => {
+                        const IconComponent = tag.icon;
+                        return (
+                          <div class="bg-background-grey px-[14px] py-[10px] md:py-[10px] rounded-[6px] flex gap-2 items-center">
+                            <IconComponent class="w-4 h-4 text-primary" />
+                            <p class="font-body font-medium text-[14.5px] md:text-[16px] text-primary">
+                              {tag.label}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                  <p class="font-body text-base font-normal text-primary leading-normal">
-                    <span set:html={offer.description} />
-                  </p>
-                  <div class="flex flex-wrap gap-2 items-start w-full">
-                    {offer.tags.map((tag) => {
-                      const IconComponent = tag.icon;
-                      return (
-                        <div class="bg-background-grey px-[14px] py-[10px] rounded-md flex gap-2 items-center">
-                          <IconComponent class="w-5 h-5" />
-                          <p class="font-body text-sm font-normal text-primary">
-                            {tag.label}
-                          </p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
 
+          {/* Projets Section */}
           <section
             id="projects"
-            class="w-full pb-[120px] grid grid-cols-12 gap-y-[90px] gap-x-4 justify-center"
+            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
           >
-            <Hr className="col-span-12" />
-            <div class="col-span-12 flex flex-col gap-16">
-              <h2 class="font-title text-[40px] font-bold text-primary leading-normal tracking-[0.8px]">
-                {translations.projects.title}
-              </h2>
-
-              <div class="flex flex-col gap-8">
-                <div class="bg-background-light h-[360px] rounded-[6px] flex items-center justify-center relative overflow-hidden">
-                  <img
-                    src={imageMap[translations.projects.featured.image].src}
-                    alt={translations.projects.featured.imageAlt}
-                    class="max-h-[280px] max-w-[262px] object-contain"
-                  />
-                </div>
-                <div class="flex flex-col gap-6">
-                  <div class="flex flex-col gap-4">
-                    <h3 class="font-title text-[24px] font-bold text-primary leading-[34px]">
-                      {translations.projects.featured.title}
-                    </h3>
-                    <p class="font-body text-base font-normal text-primary leading-[22px]">
-                      {translations.projects.featured.description}
-                    </p>
-                    <p
-                      class="font-body text-sm font-bold text-accent leading-5"
-                      set:html={translations.projects.featured.collaboration}
-                    />
-                  </div>
-                  <div class="flex gap-2">
-                    {translations.projects.featured.tags.map((tag) => (
-                      <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body text-[12px] font-medium text-primary">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+            <Hr />
+            <div class="flex flex-col gap-8 md:gap-12">
+              <div class="flex gap-3 items-center">
+                <ProjectsIcon class="w-4 h-4 text-accent shrink-0" />
+                <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
+                  {translations.projects.title}
+                </p>
               </div>
-              {translations.projects.list.map((project) => (
-                <div class="flex gap-12 items-start">
-                  <div class="flex-1 flex flex-col gap-6">
-                    <div class="flex flex-col gap-4">
-                      <h3 class="font-title text-[24px] font-bold text-primary leading-[34px]">
-                        {project.title}
-                      </h3>
-                      <p class="font-body text-base font-normal text-primary leading-[22px]">
-                        {project.description}
-                      </p>
-                      <p
-                        class="font-body text-sm font-bold text-accent leading-5"
-                        set:html={project.collaboration}
-                      />
-                    </div>
-                    <div class="flex gap-2">
-                      {project.tags.map((tag) => (
-                        <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body text-[12px] font-medium text-primary">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div
-                    class="w-[180px] h-[180px] rounded-[6px] flex items-center justify-center shrink-0"
-                    style={`background-color: ${project.backgroundColor}`}
-                  >
-                    <Image
-                      src={imageMap[project.image]}
-                      alt={project.imageAlt}
-                      class="max-w-[130px] max-h-[130px] object-contain"
-                      width={390}
-                      height={390}
-                    />
-                  </div>
-                </div>
-              ))}
-              <p
-                class="font-body text-base font-medium text-primary"
-                set:html={translations.projects.cta}
-              />
-            </div>
-          </section>
 
-          <section
-            id="collective"
-            class="w-full pb-[120px] pt-[90px] grid grid-cols-12 gap-12 justify-center"
-          >
-            <div class="col-span-12 flex gap-3 items-center w-full">
-              <div class="w-3 h-3 rotate-45 bg-accent rounded-sm" />
-              <p class="font-title text-base font-semibold text-accent uppercase">
-                {translations.collective.title}
-              </p>
-            </div>
-            <div class="col-span-12 grid grid-cols-12 gap-12 items-start w-full">
-              {translations.collective.members.map((member) => (
-                <div class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start">
-                  <div class="w-[108px] h-[108px] bg-background-light rounded-md">
-                    <Image
-                      src={imageMap[member.image]}
-                      alt={member.name}
-                      width={324}
-                      height={324}
-                      class="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div class="flex flex-col gap-2 items-start text-primary">
-                    <p class="font-body text-base font-bold">{member.name}</p>
-                    <p class="font-body text-xl font-medium">{member.role}</p>
-                  </div>
-                  <p
-                    set:text={member.bio}
-                    class="font-body text-base font-normal text-primary leading-normal whitespace-pre-wrap"
-                  />
-                  <a
-                    href={member.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex gap-1 items-center cursor-pointer"
+              {/* Projects */}
+              {translations.projects.list.map((project, index) => {
+                const imageData = imageMap[project.image];
+                const imageSrc =
+                  typeof imageData === 'object' && 'image' in imageData
+                    ? imageData.image
+                    : imageData;
+                const backgroundPosition =
+                  typeof imageData === 'object' &&
+                  'backgroundPosition' in imageData
+                    ? imageData.backgroundPosition
+                    : '50% 50%';
+                const backgroundSize =
+                  typeof imageData === 'object' && 'backgroundSize' in imageData
+                    ? imageData.backgroundSize
+                    : 'contain';
+                const imageUrl = imageSrc?.src || imageSrc;
+
+                return (
+                  <div
+                    class="flex flex-col md:flex-row gap-6 md:gap-12"
+                    style={index > 0 ? 'margin-top: 64px;' : ''}
                   >
-                    <span class="font-body text-base font-medium text-primary-light underline">
-                      Linkedin
+                    <div
+                      class="h-[198px] md:h-[360px] rounded-[4px] w-full md:w-1/2 bg-no-repeat"
+                      style={`background-color: ${project.backgroundColor}; background-image: url(${imageUrl}); background-position: ${backgroundPosition}; background-size: ${backgroundSize};`}
+                      role="img"
+                      aria-label={project.imageAlt}
+                    />
+                    <div class="flex flex-col gap-6 md:gap-6 w-full md:w-1/2">
+                      <div class="flex flex-col gap-4 md:gap-4">
+                        <h3 class="font-title font-bold text-[24px] text-primary leading-[34px]">
+                          {project.title}
+                        </h3>
+                        <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
+                          {project.description}
+                        </p>
+                        <p
+                          class="font-body font-semibold text-[14.5px] text-secondary leading-[20px]"
+                          set:html={project.collaboration}
+                        />
+                      </div>
+                      <div class="flex gap-2">
+                        {project.tags.map((tag) => (
+                          <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body font-medium text-[14.5px] text-primary">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* CTA */}
+              <div class="flex flex-col gap-2 md:gap-2">
+                <p class="font-title font-bold text-[20px] text-secondary leading-[30px]">
+                  Pour en savoir plus sur nos projets
+                </p>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-2 items-start md:items-center">
+                  <p class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]">
+                    {translations.contact.emailLabel}
+                  </p>
+                  <a
+                    href={`mailto:${translations.contact.email}`}
+                    class="font-body font-medium text-[20px] md:text-[28px] text-accent underline leading-[30px] md:leading-[40px] inline-flex items-center gap-1"
+                  >
+                    {translations.contact.email}
+                    <span class="p-[6px]">
+                      <ArrowIcon class="w-3 h-3 md:w-4 md:h-4" />
                     </span>
                   </a>
                 </div>
-              ))}
+              </div>
             </div>
           </section>
 
+          {/* Notre Collectif Section */}
+          <section
+            id="collective"
+            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
+          >
+            <Hr />
+            <div class="flex flex-col gap-8 md:gap-12">
+              <div class="flex gap-3 items-center">
+                <CollectiveIcon class="w-4 h-4 text-accent shrink-0" />
+                <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
+                  {translations.collective.title}
+                </p>
+              </div>
+              <div class="flex flex-col md:grid md:grid-cols-3 gap-12 md:gap-16">
+                {translations.collective.members.map((member) => (
+                  <div class="flex flex-col gap-6 md:gap-6">
+                    <div class="w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-background-grey rounded-[6px]">
+                      <Image
+                        src={imageMap[member.image]}
+                        alt={member.name}
+                        width={324}
+                        height={324}
+                        class="w-full h-full object-cover rounded-[6px]"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1 md:gap-1">
+                      <p class="font-body font-bold text-[16px] text-primary leading-[22px]">
+                        {member.name}
+                      </p>
+                      <p class="font-body font-medium text-[20px] text-primary leading-[30px]">
+                        {member.role}
+                      </p>
+                    </div>
+                    <p
+                      set:text={member.bio}
+                      class="font-body font-normal text-[16px] text-primary leading-[22px] whitespace-pre-wrap"
+                    />
+                    <a
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-accent flex items-center cursor-pointer"
+                    >
+                      <span class="font-title font-semibold text-[16px] underline">
+                        Linkedin
+                      </span>
+                      <span class="p-2">
+                        <ArrowIcon class="w-2 h-2" />
+                      </span>
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Nos Compétences Section */}
           <section
             id="skills"
-            class="w-full pb-[120px] grid grid-cols-12 gap-12 justify-center"
+            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
           >
-            <div class="col-span-12 flex gap-3 items-center w-full">
-              <div class="w-3 h-3 rotate-45 bg-accent rounded-sm" />
-              <p class="font-title text-base font-semibold text-accent uppercase">
-                {translations.skills.title}
-              </p>
-            </div>
-            <div class="col-span-12 grid grid-cols-12 gap-12 items-start w-full">
-              {translations.skills.categories.map((category) => (
-                <div class="col-span-12 md:col-span-4 flex flex-col gap-6 items-start">
-                  <Hr />
-                  <h3 class="font-title text-2xl font-bold text-primary">
-                    {category.title}
-                  </h3>
-                  <div class="flex flex-col gap-4 text-base text-primary">
-                    {category.items.map((item) => (
-                      <div>
-                        <p class="font-body font-bold text-accent mb-1">
-                          {item.title}
-                        </p>
-                        <p class="font-body font-normal">{item.description}</p>
-                      </div>
-                    ))}
+            <Hr />
+            <div class="flex flex-col gap-8 md:gap-12">
+              <div class="flex gap-3 items-center">
+                <SkillsIcon class="w-4 h-4 text-accent shrink-0" />
+                <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
+                  {translations.skills.title}
+                </p>
+              </div>
+              <div class="flex flex-col md:grid md:grid-cols-3 gap-10 md:gap-16">
+                {translations.skills.categories.map((category) => (
+                  <div class="flex flex-col gap-4 md:gap-4">
+                    <h3 class="font-title font-bold text-[20px] text-secondary leading-[30px]">
+                      {category.title}
+                    </h3>
+                    <div class="flex flex-col gap-4">
+                      {category.items.map((item) => (
+                        <div>
+                          <p class="font-body font-bold text-[16px] text-accent leading-[22px] mb-1">
+                            {item.title}
+                          </p>
+                          <p class="font-body font-normal text-[16px] text-primary leading-[22px]">
+                            {item.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </section>
         </>
       )
     }
+
+    {/* Contact Section */}
     <section
       id="contact"
-      class="w-full pb-[120px] grid grid-cols-12 gap-y-[90px] md:gap-x-4 justify-center"
+      class="w-full pb-[200px] md:pb-[320px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
     >
-      <Hr className="col-span-12" />
-      <div class="col-span-12 flex flex-col gap-2 items-start">
-        <p class="font-body text-base font-bold text-primary">
+      <Hr />
+      <div class="flex flex-col gap-2 md:gap-2">
+        <p
+          class="font-title font-bold text-[20px] md:text-[20px] text-secondary leading-[30px]"
+        >
           {translations.contact.title}
         </p>
-        <p
-          class="font-body text-xl md:text-2xl lg:text-[28px] font-medium text-accent"
+        <div
+          class="flex flex-col md:flex-row gap-2 md:gap-2 items-start md:items-center"
         >
-          {translations.contact.emailLabel}
+          <p
+            class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]"
+          >
+            {translations.contact.emailLabel}
+          </p>
           <a
             href={`mailto:${translations.contact.email}`}
-            class="underline cursor-pointer">{translations.contact.email}</a
+            class="font-body font-medium text-[20px] md:text-[28px] text-accent underline leading-[30px] md:leading-[40px] inline-flex items-center gap-1"
           >
-        </p>
+            {translations.contact.email}
+            <span class="p-[6px]">
+              <ArrowIcon class="w-3 h-3 md:w-4 md:h-4" />
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   </main>

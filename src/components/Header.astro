@@ -1,6 +1,15 @@
 ---
 import type { Translations } from '../i18n/fr';
 import { config } from '../config/config';
+import Hr from './Hr.astro';
+import KimeIcon from '../assets/icons/kime.svg';
+import ProjectsIcon from '../assets/icons/projects.svg';
+import CollectiveIcon from '../assets/icons/collective.svg';
+import ContactIcon from '../assets/icons/contact.svg';
+import CloseIcon from '../assets/icons/close.svg';
+import MenuIcon from '../assets/icons/menu.svg';
+import ArrowIcon from '../assets/icons/arrow.svg';
+
 type Props = { translations: Translations };
 const { translations } = Astro.props as Props;
 const { isProduction } = config;
@@ -8,37 +17,167 @@ const { isProduction } = config;
 
 <header class="sticky top-0 z-50 bg-white w-full">
   <div
-    class="container mx-auto flex items-center justify-between px-4 max-w-[1440px]"
+    class="container mx-auto flex items-center justify-between px-4 md:px-[72px] max-w-[1440px] py-6 md:py-8"
   >
-    <a
-      href="#top"
-      class="font-title font-bold px-4 py-6 text-base text-primary"
-    >
-      {translations.site.title}
-    </a>
-    {
-      !isProduction && (
-        <nav class="hidden md:flex items-center gap-12 cursor-pointer">
-          <a
-            href="#projects"
-            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
+    {/* Mobile Header */}
+    <div class="flex md:hidden items-center justify-between w-full">
+      <a
+        href="#kime"
+        class="font-title font-bold text-[20px] text-accent leading-[22px] flex gap-3 items-center"
+      >
+        <KimeIcon class="w-4 h-4 text-accent shrink-0" />
+        {translations.site.title}
+      </a>
+      <details class="relative" id="mobile-menu">
+        <summary class="list-none cursor-pointer">
+          <div
+            class="bg-background-grey rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center"
           >
-            {translations.nav.projects}
-          </a>
-          <a
-            href="#collective"
-            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
-          >
-            {translations.nav.collective}
-          </a>
-          <a
-            href="#contact"
-            class="text-base text-primary-light hover:text-accent transition-colors font-medium font-body whitespace-nowrap"
-          >
-            {translations.nav.contact}
-          </a>
-        </nav>
-      )
-    }
+            <MenuIcon class="w-4 h-4 text-primary" />
+          </div>
+        </summary>
+        <div
+          class="fixed inset-0 bg-white z-50 pt-6 pb-[72px] px-4 flex flex-col gap-8"
+        >
+          {/* Menu Header */}
+          <div class="flex items-center justify-between h-[40px]">
+            <a
+              href="#kime"
+              class="flex gap-3 items-center cursor-pointer text-accent"
+              data-menu-link
+            >
+              <KimeIcon class="w-4 h4" />
+              <h1 class="font-title font-bold text-[20px] leading-[22px]">
+                {translations.site.title}
+              </h1>
+            </a>
+            <button
+              type="button"
+              class="cursor-pointer bg-white rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center border-0"
+              data-menu-close
+            >
+              <CloseIcon class="w-4 h-4 text-primary" />
+            </button>
+          </div>
+          <Hr className="w-full" />
+          {/* Menu Links */}
+          <div class="flex flex-col gap-8">
+            <a
+              href="#projects"
+              class="flex gap-3 items-center text-[20px] font-medium font-body text-primary leading-[30px]"
+              data-menu-link
+            >
+              <ProjectsIcon class="w-[14px] h-[14px] text-accent" />
+              {translations.nav.projects}
+            </a>
+            <Hr className="w-full" />
+            <a
+              href="#collective"
+              class="flex gap-3 items-center text-[20px] font-medium font-body text-primary leading-[30px]"
+              data-menu-link
+            >
+              <CollectiveIcon class="w-[14px] h-[14px] text-accent" />
+              {translations.nav.collective}
+            </a>
+            <Hr className="w-full" />
+            {/* Contact Section */}
+            <div class="flex flex-col gap-2">
+              <p
+                class="font-title font-bold text-[20px] text-secondary leading-[30px]"
+              >
+                {translations.contact.title}
+              </p>
+              <div class="flex flex-col">
+                <p
+                  class="font-body font-medium text-[20px] text-secondary leading-[30px]"
+                >
+                  {translations.contact.emailLabel}
+                </p>
+                <a
+                  href={`mailto:${translations.contact.email}`}
+                  class="font-body font-medium text-[20px] text-accent underline leading-[30px] inline-flex items-center gap-1"
+                >
+                  {translations.contact.email}
+
+                  <span class="p-[6px]"> <ArrowIcon class="w-3 h-3" /></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    {/* Desktop Header */}
+    <div class="hidden md:flex items-center justify-between w-full">
+      <a
+        href="#kime"
+        class="flex gap-3 items-center font-title font-bold text-base text-accent text-[20px] leading-[22px]"
+      >
+        <KimeIcon class="w-4 h-4 text-accent shrink-0" />
+        {translations.site.title}
+        <span class="hidden header-xl-inline">
+          · {translations.site.description}</span
+        >
+      </a>
+      {
+        !isProduction && (
+          <nav class="flex items-center gap-3">
+            <a
+              href="#projects"
+              class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+            >
+              <ProjectsIcon class="w-[14px] h-[14px] text-accent" />
+              {translations.nav.projects}
+            </a>
+            <a
+              href="#collective"
+              class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+            >
+              <CollectiveIcon class="w-[14px] h-[14px] text-accent" />
+              {translations.nav.collective}
+            </a>
+            <a
+              href="#contact"
+              class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+            >
+              <ContactIcon class="w-[14px] h-[14px] text-accent" />
+              {translations.nav.contact}
+            </a>
+          </nav>
+        )
+      }
+    </div>
   </div>
 </header>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details summary::marker {
+    display: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const closeButton = document.querySelector('[data-menu-close]');
+    const menuLinks = document.querySelectorAll('[data-menu-link]');
+    const menuDetails = document.getElementById('mobile-menu');
+
+    const closeMenu = () => {
+      if (menuDetails) {
+        menuDetails.removeAttribute('open');
+      }
+    };
+
+    if (closeButton) {
+      closeButton.addEventListener('click', closeMenu);
+    }
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  });
+</script>
