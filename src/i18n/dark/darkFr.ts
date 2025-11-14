@@ -97,22 +97,23 @@ export const darkFr: Translations = {
   projects: {
     title: 'Sélection de projets',
     cta: 'Pour en savoir plus sur nos échecs contrôlés, <a href="#contact" class="underline cursor-pointer">contactez-nous</a>',
-    featured: {
-      image: 'fne.svg' as const,
-      imageAlt: 'Carte illisible avec points aléatoires',
-      title:
-        "Un écosystème confus qui entrave la mise en œuvre de la politique publique d'inclusion numérique",
-      description:
-        "Pendant plus de 3 ans, nous avons complexifié avec soin des outils destinés aux acteurs de la médiation numérique, pour qu'ils passent plus de temps à comprendre l'outil qu'à aider les gens.",
-      collaboration:
-        'En collaboration avec <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> et <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - AUJOURD’HIER',
-      tags: ['Contre-conception produit', "Désorganisation d'équipe"],
-    },
     list: [
       {
-        image: 'docaposte.jpg' as const,
+        image: 'fne.svg' as const,
+        imageAlt: 'Carte illisible avec points aléatoires',
+        backgroundColor: '#F5F5FE',
+        title:
+          "Un écosystème confus qui entrave la mise en œuvre de la politique publique d'inclusion numérique",
+        description:
+          "Pendant plus de 3 ans, nous avons complexifié avec soin des outils destinés aux acteurs de la médiation numérique, pour qu'ils passent plus de temps à comprendre l'outil qu'à aider les gens.",
+        collaboration:
+          'En collaboration avec <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> et <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - AUJOURD’HIER',
+        tags: ['Contre-conception produit', "Désorganisation d'équipe"],
+      },
+      {
+        image: 'docaposte.png' as const,
         imageAlt: 'Design system décoratif Docaposte',
-        backgroundColor: '#417dff',
+        backgroundColor: '#F8F8FB',
         title: "Désaligner l'expérience d'usage des outils Docaposte",
         description:
           "Nous avons installé une identité brillante et un Design System si complet qu'il n'est utilisable par personne. Résultat : chaque produit reste unique, dans le pire sens du terme.",
@@ -123,7 +124,7 @@ export const darkFr: Translations = {
       {
         image: 'gps.png' as const,
         imageAlt: 'Application GPS indoor déroutante',
-        backgroundColor: '#f5f5fe',
+        backgroundColor: '#F0F3F0',
         title: 'Perdre tout le monde grâce à un GPS indoor',
         description:
           "Une application qui promet la clarté mais excelle dans l'ambiguïté des parcours, surtout dans les lieux complexes. Les détours sont une fonctionnalité.",
@@ -134,7 +135,7 @@ export const darkFr: Translations = {
       {
         image: 'nutriscore.png' as const,
         imageAlt: 'Nutriscore approximatif',
-        backgroundColor: '#f4ed95',
+        backgroundColor: '#F9FAE6',
         title: "Plateforme d'expérience confuse",
         description:
           'Des applications web parfaites pour tester des hypothèses jamais vérifiées, en temps réel et en désordre. Idéal pour valider ce qui nous arrange.',

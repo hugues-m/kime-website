@@ -8,12 +8,13 @@
     var(--Font-Famliy-Title, 'Hanken Grotesk'), 'Hanken Grotesk', system-ui,
     sans-serif;
 
-  --color-primary: #322b29;
-  --color-primary-light: #8d827e;
-  --color-secondary: #8d827e;
+  /* NEW GRIS THEME PRINCIPAL FONT: #808282 */
+  --color-primary: #232929;
+  --color-primary-light: #828383;
+  --color-secondary: #828383;
   --color-accent: #00b2a9;
-  --color-background-grey: #f5f5f5;
-  --color-background-light: #f5f5fe;
+  --color-background-grey: #f7f5f7;
+  --color-background-light: #f7f5fe;
   --color-stroke-default: #cecece;
   --breakpoint-header-xl: 1256px;
 }

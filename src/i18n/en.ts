@@ -66,7 +66,7 @@ export const en: Translations = {
         title: 'Creation and improvement of digital products',
         label: 'Offer 01 - Production',
         shortDescription:
-          'You have a product idea, you need a team to design it.',
+          'You have a product idea, you need a team to design it. We support you from gathering requirements through to production deployment.',
         description:
           'Whether you are evolving a product or launching an idea, we clarify your objectives and <strong>real user needs</strong>. A design survey tests hypotheses in the field. We <strong>prototype quickly and measure impact</strong>. Learning guides <strong>development in short cycles</strong> to deliver continuously. At each stage, user feedback helps us converge to the most relevant solution.',
         tags: [
@@ -97,22 +97,23 @@ export const en: Translations = {
   projects: {
     title: 'Project selection',
     cta: 'To learn more about our projects, <a href="#contact" class="underline cursor-pointer">contact us</a>',
-    featured: {
-      image: 'fne.svg' as const,
-      imageAlt: 'Map of France with digital mediation points',
-      title:
-        'A set of digital tools useful for implementing the national public policy on digital inclusion',
-      description:
-        'For more than 3 years, we have supported the Digital Society program of the National Agency for Territorial Cohesion in improving and designing an ecosystem of digital tools useful to digital mediation actors to support people who are far from digital technology and manage various programs.',
-      collaboration:
-        'In collaboration with <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> and <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - TODAY',
-      tags: ['Product design', 'Team structuring'],
-    },
     list: [
       {
-        image: 'docaposte.jpg' as const,
+        image: 'fne.svg' as const,
+        imageAlt: 'Map of France with digital mediation points',
+        backgroundColor: '#F5F5FE',
+        title:
+          'A set of digital tools useful for implementing the national public policy on digital inclusion',
+        description:
+          'For more than 3 years, we have supported the Digital Society program of the National Agency for Territorial Cohesion in improving and designing an ecosystem of digital tools useful to digital mediation actors to support people who are far from digital technology and manage various programs.',
+        collaboration:
+          'In collaboration with <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> and <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - TODAY',
+        tags: ['Product design', 'Team structuring'],
+      },
+      {
+        image: 'docaposte.png' as const,
         imageAlt: 'Docaposte design system',
-        backgroundColor: '#417dff',
+        backgroundColor: '#F8F8FB',
         title: 'Making the user experience of Docaposte tools consistent',
         description:
           'Design of the Docaposte Design System, with a dual challenge: translate their new visual identity within heterogeneous products & evolve them towards greater coherence visually and in their uses.',
@@ -123,7 +124,7 @@ export const en: Translations = {
       {
         image: 'gps.png' as const,
         imageAlt: 'Evelity indoor GPS application',
-        backgroundColor: '#f5f5fe',
+        backgroundColor: '#F0F3F0',
         title: 'Indoor GPS application for visually impaired people',
         description:
           'An iOS and Android mobile application that allows people with visual or motor disabilities to be guided, outdoors and indoors in complex places such as metro stations.',
@@ -134,7 +135,7 @@ export const en: Translations = {
       {
         image: 'nutriscore.png' as const,
         imageAlt: 'Nutriscore',
-        backgroundColor: '#f4ed95',
+        backgroundColor: '#F9FAE6',
         title: 'Experience platform for research',
         description:
           'A web application that allows researchers in behavioral economics to create protocols and conduct multiplayer experiments in real time. Used for example to implement the nutriscore in France.',

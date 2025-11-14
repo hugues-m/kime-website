@@ -57,7 +57,7 @@ export const fr = {
   offers: {
     title: 'Nos offres',
     intro:
-      "Nous proposons différents types d’interventions en fonction de vos besoins. Notre collectif peut également s'adapter en fonction des projets qui lui sont confiées et des besoins en terme de compétences, grâce à un réseau d'indépendants de confiance.",
+      "Nous proposons différents types d’interventions en fonction de vos besoins. Notre collectif peut également s'adapter en fonction des projets qui lui sont confiés et des besoins en terme de compétences, grâce à un réseau d'indépendants de confiance.",
     list: [
       {
         number: '01' as const,
@@ -65,7 +65,7 @@ export const fr = {
         title: 'Création et amélioration de produits numériques',
         label: 'Offre 01 - Production',
         shortDescription:
-          'Vous avez une idée de produit, vous avez besoin d’une équipe pour le concevoir.',
+          'Vous avez une idée de produit, vous avez besoin d’une équipe pour le concevoir. Nous vous avons accompagnons du recueil de besoins jusqu’à la mise en production.',
         description:
           "Que vous fassiez évoluer un produit ou lanciez une idée, nous clarifions vos objectifs et les <strong>besoins réels des utilisateurs</strong>. Une enquête de design teste les hypothèses sur le terrain. Nous <strong>prototypons vite et mesurons l'impact</strong>. Les apprentissages guident <strong>un développement en cycles courts</strong> pour livrer de manière continue. À chaque étape, les retours utilisateurs nous font converger vers la solution la plus pertinente.",
         tags: [
@@ -97,22 +97,23 @@ export const fr = {
   projects: {
     title: 'Sélection de projets',
     cta: 'Pour en savoir plus sur nos projets, <a href="#contact" class="underline cursor-pointer">contactez-nous</a>',
-    featured: {
-      image: 'fne.svg' as const,
-      imageAlt: 'Carte de France avec points de médiation numérique',
-      title:
-        "Un ensemble d'outils numériques utiles à la mise en oeuvre de la politique publique nationale d'inclusion numérique",
-      description:
-        "Nous avons accompagné, pendant plus de 3 ans, le programme Société Numérique de l'Agence Nationale de la Cohésion des Territoires dans l'amélioration et la conception d'un écosystème d'outils numériques utiles aux acteurs de la médiation numérique pour accompagner les personnes éloignées du numérique et piloter différents dispositifs.",
-      collaboration:
-        'En collaboration avec <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> et <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - AUJOURD’HUI',
-      tags: ['Conception produit', "Structuration d'équipe"],
-    },
     list: [
       {
-        image: 'docaposte.jpg' as const,
+        image: 'fne.svg' as const,
+        imageAlt: 'Carte de France avec points de médiation numérique',
+        backgroundColor: '#F5F5FE',
+        title:
+          "Un ensemble d'outils numériques utiles à la mise en oeuvre de la politique publique nationale d'inclusion numérique",
+        description:
+          "Nous avons accompagné, pendant plus de 3 ans, le programme Société Numérique de l'Agence Nationale de la Cohésion des Territoires dans l'amélioration et la conception d'un écosystème d'outils numériques utiles aux acteurs de la médiation numérique pour accompagner les personnes éloignées du numérique et piloter différents dispositifs.",
+        collaboration:
+          'En collaboration avec <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> et <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - AUJOURD’HUI',
+        tags: ['Conception produit', "Structuration d'équipe"],
+      },
+      {
+        image: 'docaposte.png' as const,
         imageAlt: 'Design system Docaposte',
-        backgroundColor: '#417dff',
+        backgroundColor: '#F8F8FB',
         title: "Mettre en cohérence l'expérience d'usage des outils Docaposte",
         description:
           'Conception du Design System Docaposte, avec un enjeu double\u00A0: traduire leur nouvelle identité visuelle au sein de produits hétérogènes & les faire évoluer vers plus de cohérence visuellement et dans leurs usages.',
@@ -123,7 +124,7 @@ export const fr = {
       {
         image: 'gps.png' as const,
         imageAlt: 'Application GPS indoor Evelity',
-        backgroundColor: '#f5f5fe',
+        backgroundColor: '#F0F3F0',
         title: 'Application de GPS indoor pour personnes déficientes visuelles',
         description:
           "Une application mobile iOS et Android qui permet aux personnes en situation de handicap visuel ou moteur d'être guidées, en extérieur comme en intérieur dans des lieux complexes comme des stations de métro.",
@@ -134,7 +135,7 @@ export const fr = {
       {
         image: 'nutriscore.png' as const,
         imageAlt: 'Nutriscore',
-        backgroundColor: '#f4ed95',
+        backgroundColor: '#F9FAE6',
         title: "Plateforme d'expérience pour la recherche",
         description:
           'Une application web qui permet aux chercheurs en économie comportementale de créer des protocoles et mener des expériences multijoueurs en temps réel. Utilisé par exemple pour mettre en place le nutriscore en France.',
