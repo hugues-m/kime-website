@@ -9,7 +9,6 @@ import huguesImage from '../assets/images/hugues.png';
 import thibaultImage from '../assets/images/thibault.png';
 import sylvainImage from '../assets/images/sylvain.png';
 import Header from './Header.astro';
-import { config } from '../config/config';
 import { Image } from 'astro:assets';
 import ArrowIcon from '../assets/icons/arrow.svg';
 import CollectiveIcon from '../assets/icons/collective.svg';
@@ -18,8 +17,12 @@ import PilliersIcon from '../assets/icons/pilliers.svg';
 import ProjectsIcon from '../assets/icons/projects.svg';
 import SkillsIcon from '../assets/icons/skills.svg';
 
-type Props = { translations: Translations };
-const { translations } = Astro.props as Props;
+type Props = {
+  translations: Translations;
+  currentLocale: 'fr' | 'en';
+  paths: { fr: string; en: string };
+};
+const { translations, currentLocale, paths } = Astro.props as Props;
 
 const imageMap = {
   'fne.svg': {
@@ -46,15 +49,17 @@ const imageMap = {
   'thibault.png': thibaultImage,
   'sylvain.png': sylvainImage,
 };
-
-const { isProduction } = config;
 ---
 
 <div class="min-h-screen bg-white flex flex-col items-start">
-  <Header translations={translations} />
+  <Header
+    translations={translations}
+    currentLocale={currentLocale}
+    paths={paths}
+  />
   <main class="container mx-auto max-w-[1440px] w-full">
     <h2
-      class="font-title font-bold text-[20px] text-accent leading-[30px] md:leading-[22px] header-xl-hidden px-4 md:px-[72px]"
+      class={`font-title font-bold text-[20px] text-accent leading-[30px] md:leading-[22px] header-xl-hidden-${currentLocale} px-4 md:px-[72px]`}
     >
       {translations.hero.title}
     </h2>
@@ -80,273 +85,294 @@ const { isProduction } = config;
       </div>
     </section>
 
-    {
-      !isProduction && (
-        <>
-          {/* Notre approche Section */}
-          <section
-            id="approach"
-            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
-          >
-            <div class="flex gap-3 items-center">
-              <PilliersIcon class="w-4 h-4 text-accent shrink-0" />
-              <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
-                {translations.approach.title}
-              </p>
-            </div>
-            <div class="flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-10">
-              {translations.approach.principles.map((principle) => (
-                <div class="flex flex-col gap-6">
-                  <Hr />
-                  <div class="flex flex-col gap-3">
-                    <p
-                      set:text={principle.title}
-                      class="font-body font-bold text-[20px] text-secondary leading-[30px] whitespace-pre-wrap"
-                    />
-                    <p class="font-body font-normal text-[16px] text-primary leading-[22px] hidden md:block">
-                      {principle.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Nos offres Section */}
-          <section
-            id="offers"
-            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
-          >
-            <div class="flex gap-3 items-center">
-              <OffersIcon class="w-4 h-4 text-accent shrink-0" />
-              <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
-                {translations.offers.title}
-              </p>
-            </div>
-            <div class="flex flex-col gap-16 md:gap-16">
-              <p class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]">
-                {translations.offers.intro}
-              </p>
-              <div class="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-16">
-                {translations.offers.list.map((offer) => (
-                  <div class="flex flex-col gap-6 md:gap-6">
-                    <Hr />
-                    <div class="flex flex-col gap-2 md:gap-2">
-                      <p class="font-title font-bold text-[20px] text-accent leading-[30px]">
-                        {offer.label}
-                      </p>
-                      <p class="font-title font-bold text-[24px] md:text-[28px] text-primary leading-[34px] md:leading-normal tracking-[0.56px]">
-                        {offer.title}
-                      </p>
-                    </div>
-                    <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
-                      {offer.shortDescription}
-                    </p>
-                    <div class="flex flex-wrap gap-2 items-start">
-                      {offer.tags.map((tag) => {
-                        const IconComponent = tag.icon;
-                        return (
-                          <div class="bg-background-grey px-[14px] py-[10px] md:py-[10px] rounded-[6px] flex gap-2 items-center">
-                            <IconComponent class="w-4 h-4 text-primary" />
-                            <p class="font-body font-medium text-[14.5px] md:text-[16px] text-primary">
-                              {tag.label}
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Projets Section */}
-          <section
-            id="projects"
-            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
-          >
-            <Hr />
-            <div class="flex flex-col gap-8 md:gap-12">
-              <div class="flex gap-3 items-center">
-                <ProjectsIcon class="w-4 h-4 text-accent shrink-0" />
-                <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
-                  {translations.projects.title}
+    {/* Notre approche Section */}
+    <section
+      id="approach"
+      class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
+    >
+      <div class="flex gap-3 items-center">
+        <PilliersIcon class="w-4 h-4 text-accent shrink-0" />
+        <p
+          class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]"
+        >
+          {translations.approach.title}
+        </p>
+      </div>
+      <div class="flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-10">
+        {
+          translations.approach.principles.map((principle) => (
+            <div class="flex flex-col gap-6">
+              <Hr />
+              <div class="flex flex-col gap-3">
+                <p
+                  set:text={principle.title}
+                  class="font-body font-bold text-[20px] text-secondary leading-[30px] whitespace-pre-wrap"
+                />
+                <p class="font-body font-normal text-[16px] text-primary leading-[22px] hidden md:block">
+                  {principle.description}
                 </p>
               </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
 
-              {/* Projects */}
-              {translations.projects.list.map((project, index) => {
-                const imageData = imageMap[project.image];
-                const imageSrc =
-                  typeof imageData === 'object' && 'image' in imageData
-                    ? imageData.image
-                    : imageData;
-                const backgroundPosition =
-                  typeof imageData === 'object' &&
-                  'backgroundPosition' in imageData
-                    ? imageData.backgroundPosition
-                    : '50% 50%';
-                const backgroundSize =
-                  typeof imageData === 'object' && 'backgroundSize' in imageData
-                    ? imageData.backgroundSize
-                    : 'contain';
-                const imageUrl = imageSrc?.src || imageSrc;
-
-                return (
-                  <div
-                    class="flex flex-col md:flex-row gap-6 md:gap-12"
-                    style={index > 0 ? 'margin-top: 64px;' : ''}
-                  >
-                    <div
-                      class="h-[198px] md:h-[360px] rounded-[4px] w-full md:w-1/2 bg-no-repeat"
-                      style={`background-color: ${project.backgroundColor}; background-image: url(${imageUrl}); background-position: ${backgroundPosition}; background-size: ${backgroundSize};`}
-                      role="img"
-                      aria-label={project.imageAlt}
-                    />
-                    <div class="flex flex-col gap-6 md:gap-6 w-full md:w-1/2">
-                      <div class="flex flex-col gap-4 md:gap-4">
-                        <h3 class="font-title font-bold text-[24px] text-primary leading-[34px]">
-                          {project.title}
-                        </h3>
-                        <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
-                          {project.description}
-                        </p>
-                        <p
-                          class="font-body font-semibold text-[14.5px] text-secondary leading-[20px]"
-                          set:html={project.collaboration}
-                        />
-                      </div>
-                      <div class="flex gap-2">
-                        {project.tags.map((tag) => (
-                          <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body font-medium text-[14.5px] text-primary">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* CTA */}
-              <div class="flex flex-col gap-2 md:gap-2">
-                <p class="font-title font-bold text-[20px] text-secondary leading-[30px]">
-                  Pour en savoir plus sur nos projets
-                </p>
-                <div class="flex flex-col md:flex-row gap-2 md:gap-2 items-start md:items-center">
-                  <p class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]">
-                    {translations.contact.emailLabel}
+    {/* Nos offres Section */}
+    <section
+      id="offers"
+      class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
+    >
+      <div class="flex gap-3 items-center">
+        <OffersIcon class="w-4 h-4 text-accent shrink-0" />
+        <p
+          class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]"
+        >
+          {translations.offers.title}
+        </p>
+      </div>
+      <div class="flex flex-col gap-16 md:gap-16">
+        <p
+          class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]"
+        >
+          {translations.offers.intro}
+        </p>
+        <div class="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-16">
+          {
+            translations.offers.list.map((offer) => (
+              <div class="flex flex-col gap-6 md:gap-6">
+                <Hr />
+                <div class="flex flex-col gap-2 md:gap-2">
+                  <p class="font-title font-bold text-[20px] text-accent leading-[30px]">
+                    {offer.label}
                   </p>
-                  <a
-                    href={`mailto:${translations.contact.email}`}
-                    class="font-body font-medium text-[20px] md:text-[28px] text-accent underline leading-[30px] md:leading-[40px] inline-flex items-center gap-1"
-                  >
-                    {translations.contact.email}
-                    <span class="p-[6px]">
-                      <ArrowIcon class="w-3 h-3 md:w-4 md:h-4" />
-                    </span>
-                  </a>
+                  <p class="font-title font-bold text-[24px] md:text-[28px] text-primary leading-[34px] md:leading-normal tracking-[0.56px]">
+                    {offer.title}
+                  </p>
+                </div>
+                <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
+                  {offer.shortDescription}
+                </p>
+                <div class="flex flex-wrap gap-2 items-start">
+                  {offer.tags.map((tag) => {
+                    const IconComponent = tag.icon;
+                    return (
+                      <div class="bg-background-grey px-[14px] py-[10px] md:py-[10px] rounded-[6px] flex gap-2 items-center">
+                        <IconComponent class="w-4 h-4 text-primary" />
+                        <p class="font-body font-medium text-[14.5px] md:text-[16px] text-primary">
+                          {tag.label}
+                        </p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            </div>
-          </section>
+            ))
+          }
+        </div>
+      </div>
+    </section>
 
-          {/* Notre Collectif Section */}
-          <section
-            id="collective"
-            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
+    {/* Projets Section */}
+    <section
+      id="projects"
+      class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
+    >
+      <Hr />
+      <div class="flex flex-col gap-8 md:gap-12">
+        <div class="flex gap-3 items-center">
+          <ProjectsIcon class="w-4 h-4 text-accent shrink-0" />
+          <p
+            class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]"
           >
-            <Hr />
-            <div class="flex flex-col gap-8 md:gap-12">
-              <div class="flex gap-3 items-center">
-                <CollectiveIcon class="w-4 h-4 text-accent shrink-0" />
-                <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
-                  {translations.collective.title}
-                </p>
-              </div>
-              <div class="flex flex-col md:grid md:grid-cols-3 gap-12 md:gap-16">
-                {translations.collective.members.map((member) => (
-                  <div class="flex flex-col gap-6 md:gap-6">
-                    <div class="w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-background-grey rounded-[6px]">
-                      <Image
-                        src={imageMap[member.image]}
-                        alt={member.name}
-                        width={324}
-                        height={324}
-                        class="w-full h-full object-cover rounded-[6px]"
-                      />
-                    </div>
-                    <div class="flex flex-col gap-1 md:gap-1">
-                      <p class="font-body font-bold text-[16px] text-primary leading-[22px]">
-                        {member.name}
-                      </p>
-                      <p class="font-body font-medium text-[20px] text-primary leading-[30px]">
-                        {member.role}
-                      </p>
-                    </div>
-                    <p
-                      set:text={member.bio}
-                      class="font-body font-normal text-[16px] text-primary leading-[22px] whitespace-pre-wrap"
-                    />
-                    <a
-                      href={member.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-accent flex items-center cursor-pointer"
-                    >
-                      <span class="font-title font-semibold text-[16px] underline">
-                        Linkedin
-                      </span>
-                      <span class="p-2">
-                        <ArrowIcon class="w-2 h-2" />
-                      </span>
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
+            {translations.projects.title}
+          </p>
+        </div>
 
-          {/* Nos Compétences Section */}
-          <section
-            id="skills"
-            class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
-          >
-            <Hr />
-            <div class="flex flex-col gap-8 md:gap-12">
-              <div class="flex gap-3 items-center">
-                <SkillsIcon class="w-4 h-4 text-accent shrink-0" />
-                <p class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]">
-                  {translations.skills.title}
-                </p>
-              </div>
-              <div class="flex flex-col md:grid md:grid-cols-3 gap-10 md:gap-16">
-                {translations.skills.categories.map((category) => (
+        {/* Projects */}
+        {
+          translations.projects.list.map((project, index) => {
+            const imageData = imageMap[project.image];
+            const imageSrc =
+              typeof imageData === 'object' && 'image' in imageData
+                ? imageData.image
+                : imageData;
+            const backgroundPosition =
+              typeof imageData === 'object' && 'backgroundPosition' in imageData
+                ? imageData.backgroundPosition
+                : '50% 50%';
+            const backgroundSize =
+              typeof imageData === 'object' && 'backgroundSize' in imageData
+                ? imageData.backgroundSize
+                : 'contain';
+            const imageUrl = imageSrc?.src || imageSrc;
+
+            return (
+              <div
+                class="flex flex-col md:flex-row gap-6 md:gap-12"
+                style={index > 0 ? 'margin-top: 64px;' : ''}
+              >
+                <div
+                  class="h-[198px] md:h-[360px] rounded-[4px] w-full md:w-1/2 bg-no-repeat"
+                  style={`background-color: ${project.backgroundColor}; background-image: url(${imageUrl}); background-position: ${backgroundPosition}; background-size: ${backgroundSize};`}
+                  role="img"
+                  aria-label={project.imageAlt}
+                />
+                <div class="flex flex-col gap-6 md:gap-6 w-full md:w-1/2">
                   <div class="flex flex-col gap-4 md:gap-4">
-                    <h3 class="font-title font-bold text-[20px] text-secondary leading-[30px]">
-                      {category.title}
+                    <h3 class="font-title font-bold text-[24px] text-primary leading-[34px]">
+                      {project.title}
                     </h3>
-                    <div class="flex flex-col gap-4">
-                      {category.items.map((item) => (
-                        <div>
-                          <p class="font-body font-bold text-[16px] text-accent leading-[22px] mb-1">
-                            {item.title}
-                          </p>
-                          <p class="font-body font-normal text-[16px] text-primary leading-[22px]">
-                            {item.description}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                    <p class="font-body font-normal text-[18px] md:text-[20px] text-primary leading-[28px] md:leading-[30px]">
+                      {project.description}
+                    </p>
+                    <p
+                      class="font-body font-semibold text-[14.5px] text-secondary leading-[20px]"
+                      set:html={project.collaboration}
+                    />
                   </div>
-                ))}
+                  <div class="flex gap-2">
+                    {project.tags.map((tag) => (
+                      <span class="bg-background-grey px-[10px] py-3 rounded-[6px] font-body font-medium text-[14.5px] text-primary">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </section>
-        </>
-      )
-    }
+            );
+          })
+        }
+
+        {/* CTA */}
+        <div class="flex flex-col gap-2 md:gap-2">
+          <p
+            class="font-title font-bold text-[20px] text-secondary leading-[30px]"
+          >
+            Pour en savoir plus sur nos projets
+          </p>
+          <div
+            class="flex flex-col md:flex-row gap-2 md:gap-2 items-start md:items-center"
+          >
+            <p
+              class="font-body font-medium text-[20px] md:text-[28px] text-secondary leading-[30px] md:leading-[40px]"
+            >
+              {translations.contact.emailLabel}
+            </p>
+            <a
+              href={`mailto:${translations.contact.email}`}
+              class="font-body font-medium text-[20px] md:text-[28px] text-accent underline leading-[30px] md:leading-[40px] inline-flex items-center gap-1"
+            >
+              {translations.contact.email}
+              <span class="p-[6px]">
+                <ArrowIcon class="w-3 h-3 md:w-4 md:h-4" />
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Notre Collectif Section */}
+    <section
+      id="collective"
+      class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
+    >
+      <Hr />
+      <div class="flex flex-col gap-8 md:gap-12">
+        <div class="flex gap-3 items-center">
+          <CollectiveIcon class="w-4 h-4 text-accent shrink-0" />
+          <p
+            class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]"
+          >
+            {translations.collective.title}
+          </p>
+        </div>
+        <div class="flex flex-col md:grid md:grid-cols-3 gap-12 md:gap-16">
+          {
+            translations.collective.members.map((member) => (
+              <div class="flex flex-col gap-6 md:gap-6">
+                <div class="w-[120px] h-[120px] md:w-[150px] md:h-[150px] bg-background-grey rounded-[6px]">
+                  <Image
+                    src={imageMap[member.image]}
+                    alt={member.name}
+                    width={324}
+                    height={324}
+                    class="w-full h-full object-cover rounded-[6px]"
+                  />
+                </div>
+                <div class="flex flex-col gap-1 md:gap-1">
+                  <p class="font-body font-bold text-[16px] text-primary leading-[22px]">
+                    {member.name}
+                  </p>
+                  <p class="font-body font-medium text-[20px] text-primary leading-[30px]">
+                    {member.role}
+                  </p>
+                </div>
+                <p
+                  set:text={member.bio}
+                  class="font-body font-normal text-[16px] text-primary leading-[22px] whitespace-pre-wrap"
+                />
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-accent flex items-center cursor-pointer"
+                >
+                  <span class="font-title font-semibold text-[16px] underline">
+                    Linkedin
+                  </span>
+                  <span class="p-2">
+                    <ArrowIcon class="w-2 h-2" />
+                  </span>
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    {/* Nos Compétences Section */}
+    <section
+      id="skills"
+      class="w-full pb-[120px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-8 md:gap-12"
+    >
+      <Hr />
+      <div class="flex flex-col gap-8 md:gap-12">
+        <div class="flex gap-3 items-center">
+          <SkillsIcon class="w-4 h-4 text-accent shrink-0" />
+          <p
+            class="font-title font-extrabold text-[16px] text-accent uppercase tracking-[0.64px]"
+          >
+            {translations.skills.title}
+          </p>
+        </div>
+        <div class="flex flex-col md:grid md:grid-cols-3 gap-10 md:gap-16">
+          {
+            translations.skills.categories.map((category) => (
+              <div class="flex flex-col gap-4 md:gap-4">
+                <h3 class="font-title font-bold text-[20px] text-secondary leading-[30px]">
+                  {category.title}
+                </h3>
+                <div class="flex flex-col gap-4">
+                  {category.items.map((item) => (
+                    <div>
+                      <p class="font-body font-bold text-[16px] text-accent leading-[22px] mb-1">
+                        {item.title}
+                      </p>
+                      <p class="font-body font-normal text-[16px] text-primary leading-[22px]">
+                        {item.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
 
     {/* Contact Section */}
     <section

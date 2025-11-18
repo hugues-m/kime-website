@@ -72,6 +72,84 @@ const siteName = 'KIME';
     <meta name="theme-color" content="#00004d" />
   </head>
   <body id="kime" class={bodyClass}>
+    <script>
+      console.log('LAYOUT SCRIPT');
+      const PREFERRED_LOCALE_KEY = 'kime-preferred-locale';
+      type Locale = 'fr' | 'en';
+
+      /**
+       * Detects browser language and returns 'fr' or 'en'
+       */
+      function detectBrowserLanguage(): Locale {
+        const browserLang =
+          navigator.language ||
+          (navigator as Navigator & { userLanguage?: string }).userLanguage;
+        return browserLang?.startsWith('fr') ? 'fr' : 'en';
+      }
+
+      /**
+       * Gets preferred locale from localStorage or null if not set
+       */
+      function getPreferredLocale(): Locale | null {
+        if (typeof window === 'undefined') return null;
+        const stored = localStorage.getItem(PREFERRED_LOCALE_KEY);
+        return stored === 'fr' || stored === 'en' ? stored : null;
+      }
+
+      /**
+       * Sets preferred locale in localStorage
+       */
+      function setPreferredLocale(locale: Locale) {
+        if (typeof window === 'undefined') return;
+        localStorage.setItem(PREFERRED_LOCALE_KEY, locale);
+      }
+
+      /**
+       * Redirects user to the correct path based on language detection
+       * @param {Object} options - Configuration object
+       * @param {string} options.currentLocale - The current locale of the page ('fr' or 'en')
+       * @param {Object} options.paths - Object with available paths for each locale
+       * @param {string} options.paths.fr - Path for French locale
+       * @param {string} options.paths.en - Path for English locale
+       */
+      function redirectIfNeeded<T extends Locale>({
+        currentLocale,
+        paths,
+      }: {
+        currentLocale: T;
+        paths: { [key in Exclude<Locale, T>]: string };
+      }) {
+        if (typeof window === 'undefined') return;
+
+        // Check preferred locale first
+        const preferredLocale = getPreferredLocale();
+        const targetLocale = preferredLocale || detectBrowserLanguage();
+
+        console.log({
+          preferredLocale,
+          targetLocale,
+          currentLocale,
+          paths,
+        });
+
+        // If current locale matches target locale, no redirect needed
+        if (currentLocale === targetLocale) return;
+
+        // Redirect to the correct path
+        const targetPath = paths[targetLocale as Exclude<Locale, T>];
+        if (targetPath) {
+          window.location.href = targetPath;
+        }
+      }
+
+      // Export functions to window for use in page components
+      window.kimeLocale = {
+        redirectIfNeeded,
+        setPreferredLocale,
+        getPreferredLocale,
+        detectBrowserLanguage,
+      };
+    </script>
     <slot />
   </body>
 </html>

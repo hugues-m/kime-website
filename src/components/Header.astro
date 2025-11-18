@@ -1,6 +1,5 @@
 ---
 import type { Translations } from '../i18n/fr';
-import { config } from '../config/config';
 import Hr from './Hr.astro';
 import KimeIcon from '../assets/icons/kime.svg';
 import ProjectsIcon from '../assets/icons/projects.svg';
@@ -9,10 +8,14 @@ import ContactIcon from '../assets/icons/contact.svg';
 import CloseIcon from '../assets/icons/close.svg';
 import MenuIcon from '../assets/icons/menu.svg';
 import ArrowIcon from '../assets/icons/arrow.svg';
+import EnFrSwitch from './EnFrSwitch.astro';
 
-type Props = { translations: Translations };
-const { translations } = Astro.props as Props;
-const { isProduction } = config;
+type Props = {
+  translations: Translations;
+  currentLocale: 'fr' | 'en';
+  paths: { fr: string; en: string };
+};
+const { translations, currentLocale, paths } = Astro.props as Props;
 ---
 
 <header class="sticky top-0 z-50 bg-white w-full">
@@ -51,13 +54,16 @@ const { isProduction } = config;
                 {translations.site.title}
               </h1>
             </a>
-            <button
-              type="button"
-              class="cursor-pointer bg-white rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center border-0"
-              data-menu-close
-            >
-              <CloseIcon class="w-4 h-4 text-primary" />
-            </button>
+            <div class="flex items-center gap-4">
+              <EnFrSwitch currentLocale={currentLocale} paths={paths} />
+              <button
+                type="button"
+                class="cursor-pointer bg-white rounded-full p-3 w-[40px] h-[40px] flex items-center justify-center border-0"
+                data-menu-close
+              >
+                <CloseIcon class="w-4 h-4 text-primary" />
+              </button>
+            </div>
           </div>
           <Hr className="w-full" />
           {/* Menu Links */}
@@ -116,37 +122,35 @@ const { isProduction } = config;
       >
         <KimeIcon class="w-4 h-4 text-accent shrink-0" />
         {translations.site.title}
-        <span class="hidden header-xl-inline">
+        <span class={`hidden header-xl-inline-${currentLocale}`}>
           · {translations.site.description}</span
         >
       </a>
-      {
-        !isProduction && (
-          <nav class="flex items-center gap-3">
-            <a
-              href="#projects"
-              class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
-            >
-              <ProjectsIcon class="w-[14px] h-[14px] text-accent" />
-              {translations.nav.projects}
-            </a>
-            <a
-              href="#collective"
-              class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
-            >
-              <CollectiveIcon class="w-[14px] h-[14px] text-accent" />
-              {translations.nav.collective}
-            </a>
-            <a
-              href="#contact"
-              class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
-            >
-              <ContactIcon class="w-[14px] h-[14px] text-accent" />
-              {translations.nav.contact}
-            </a>
-          </nav>
-        )
-      }
+
+      <nav class="flex items-center gap-3">
+        <a
+          href="#projects"
+          class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+        >
+          <ProjectsIcon class="w-[14px] h-[14px] text-accent" />
+          {translations.nav.projects}
+        </a>
+        <a
+          href="#collective"
+          class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+        >
+          <CollectiveIcon class="w-[14px] h-[14px] text-accent" />
+          {translations.nav.collective}
+        </a>
+        <a
+          href="#contact"
+          class="bg-background-grey hover:bg-background-grey-hover rounded-full px-3 py-3 text-base text-primary transition-colors font-semibold font-title whitespace-nowrap flex items-center gap-2 leading-none"
+        >
+          <ContactIcon class="w-[14px] h-[14px] text-accent" />
+          {translations.nav.contact}
+        </a>
+        <EnFrSwitch currentLocale={currentLocale} paths={paths} />
+      </nav>
     </div>
   </div>
 </header>

@@ -12,5 +12,9 @@ const translations = darkFr;
   description={translations.site.description}
   bodyClass="dark"
 >
-  <HomePage translations={translations} />
+  <HomePage
+    translations={translations}
+    currentLocale="fr"
+    paths={{ fr: '/', en: '/en' }}
+  />
 </Layout>

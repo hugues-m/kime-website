@@ -11,5 +11,20 @@ const translations = getTranslations('fr');
   lang="fr"
   description={translations.site.description}
 >
-  <HomePage translations={translations} />
+  <HomePage
+    translations={translations}
+    currentLocale="fr"
+    paths={{ fr: '/', en: '/en' }}
+  />
+  <script>
+    console.log('INDEX SCRIPT');
+    if (typeof window !== 'undefined' && window.kimeLocale) {
+      window.kimeLocale.redirectIfNeeded({
+        currentLocale: 'fr',
+        paths: {
+          en: '/en',
+        },
+      });
+    }
+  </script>
 </Layout>

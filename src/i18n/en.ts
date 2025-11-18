@@ -8,171 +8,170 @@ import {
   SwatchBook,
   Users,
 } from '@lucide/astro';
-import type { Translations } from './fr';
 
-export const en: Translations = {
+export const en = {
   darkMode: false,
   site: {
     title: 'KIME',
-    description: 'Design and development of digital products',
+    description: 'Digital product design & development',
   },
   nav: {
-    projects: 'Project selection',
+    projects: 'Selected work',
     collective: 'Our collective',
     contact: 'Contact us',
   },
   hero: {
-    title: 'Design and development of digital products',
+    title: 'Digital product design & development',
     introA:
-      'Kime is a collective of 3 professionals: designer, product manager and developer',
+      'Kime is a three‑person collective: a designer, a product manager, and a developer.',
     introB:
-      'Thanks to our complementary skills, we can respond to all needs around the design of digital tools.',
+      'With complementary skills, we cover the full spectrum of needs across the digital product lifecycle.',
     mission:
-      'We want to put our skills at the service of projects that contribute to an emancipatory, sustainable and desirable digital world.',
+      'We put our skills to work on projects that make the digital world more empowering, sustainable, and desirable.',
   },
   approach: {
-    title: 'Our product design approach',
+    title: 'Our approach to product design',
     principles: [
       {
-        title: 'Respond\nto real needs',
+        title: 'Address real needs',
         description:
-          "To design a useful product, it must meet users' needs. A design survey is a prerequisite for any act of design. Different user research methods [qualitative and quantitative] are used throughout product design.",
+          'Useful products start with understanding users. We begin with design research and keep learning throughout the project. We run qualitative and quantitative studies across the product cycle to ground decisions in evidence.',
       },
       {
-        title: 'Design by iteration,\nwith care',
+        title: 'Iterate, with care',
         description:
-          'To design a desirable product, interfaces must be refined, built with attention, in constant cooperation with users, tested and continuously refined. Design evolution makes it possible to achieve a goal: to do better, with each iteration.',
+          'Desirable products are crafted. We co‑create with users, test early and often, and refine continuously. Short feedback loops and iterative design help us ship better outcomes each time.',
       },
       {
-        title: 'Simple, accessible & frugal products',
+        title: 'Simple, accessible & low‑impact',
         description:
-          'The search for simplicity [identifying the superfluous] is at the heart of our product design. The simplicity of use of a product supports its accessibility to all [simple to practice and understand] and its frugality [minimize its environmental impact as much as possible].',
+          'Simplicity—removing the non‑essential—is central to our practice. Clear, easy‑to‑use products improve accessibility for everyone and reduce environmental impact.',
       },
       {
-        title: 'Open\n& sovereign tools',
+        title: 'Open & sovereign tooling',
         description:
-          'We favor free and open source technological building blocks, without proprietary lock-in. You remain in control of your project and your data. Hosting is operated by trusted partners located in France or Europe.',
+          'We favor free and open‑source building blocks without vendor lock‑in. You stay in control of your project and your data. Hosting is provided by trusted partners based in France or Europe.',
       },
     ],
   },
   offers: {
-    title: 'Our offers',
+    title: 'Our services',
     intro:
-      'We offer different types of interventions according to your needs. Our collective can also adapt according to the projects entrusted to it and the needs in terms of skills, thanks to a network of trusted freelancers.',
+      'We tailor our involvement to your needs. Our collective can also scale with a trusted network of independents when projects require additional expertise.',
     list: [
       {
-        number: '01',
-        type: 'Production',
-        title: 'Creation and improvement of digital products',
-        label: 'Offer 01 - Production',
+        number: '01' as const,
+        type: 'Delivery',
+        title: 'New builds and continuous improvement',
+        label: 'Offer 01 - Delivery',
         shortDescription:
-          'You have a product idea, you need a team to design it. We support you from gathering requirements through to production deployment.',
+          'You have a product idea and need a team to bring it to life. We support you from discovery through to launch.',
         description:
-          'Whether you are evolving a product or launching an idea, we clarify your objectives and <strong>real user needs</strong>. A design survey tests hypotheses in the field. We <strong>prototype quickly and measure impact</strong>. Learning guides <strong>development in short cycles</strong> to deliver continuously. At each stage, user feedback helps us converge to the most relevant solution.',
+          'Whether you’re evolving an existing service or launching something new, we clarify your goals and <strong>your users’ real needs</strong>. We validate hypotheses through field <strong>design research</strong>. We <strong>prototype fast and measure impact</strong>. What we learn guides <strong>short development cycles</strong> and continuous delivery. At every step, user feedback helps us converge on the most relevant solution.',
         tags: [
-          { icon: ScanSearch, label: 'Audit / Diagnostic' },
-          { icon: Microscope, label: 'Design survey' },
-          { icon: Eye, label: 'UX/UI Design' },
+          { icon: ScanSearch, label: 'Audit / Assessment' },
+          { icon: Microscope, label: 'Design research' },
+          { icon: Eye, label: 'UX/UI design' },
           { icon: Blocks, label: 'Development' },
         ],
       },
       {
-        number: '02',
-        type: 'Consulting',
-        title: 'Support for structuring teams and product ecosystems',
-        label: 'Offer 02 - Consulting',
+        number: '02' as const,
+        type: 'Advisory',
+        title: 'Structuring product teams and ecosystems',
+        label: 'Offer 02 - Advisory',
         shortDescription:
-          'You already have a team and a product, but you need structural help, on vision or technology to lead your teams to autonomy.',
+          'You already have a team and a product, but need support on vision or technology to grow team autonomy.',
         description:
-          'Your team is in place. We provide <strong>operational consulting on product direction, technical and design team organization</strong>. We observe your practices, clarify vision and priorities, then define roles and simple work habits. We <strong>harmonize design, clean up tech and train managers</strong> to sustain methods. Result: a more autonomous team, better organized and more coherent services.',
+          'Your team is in place. We provide <strong>hands‑on advisory in product leadership, technical team organization, and design</strong>. We observe current practices, clarify vision and priorities, then define roles and simple ways of working. We <strong>align design, stabilize the tech, and train leads</strong> to sustain the approach. Result: a more autonomous, better‑organized team and more coherent services.',
         tags: [
-          { icon: Users, label: 'Recruitment' },
+          { icon: Users, label: 'Hiring' },
           { icon: SquareChartGantt, label: 'Product team organization' },
-          { icon: Layers, label: 'Technical stack' },
-          { icon: SwatchBook, label: 'Design System' },
+          { icon: Layers, label: 'Technology stack' },
+          { icon: SwatchBook, label: 'Design system' },
         ],
       },
     ],
   },
   projects: {
-    title: 'Project selection',
-    cta: 'To learn more about our projects, <a href="#contact" class="underline cursor-pointer">contact us</a>',
+    title: 'Selected work',
+    cta: 'To learn more about our projects, <a href="#contact" class="underline cursor-pointer">get in touch</a>',
     list: [
       {
         image: 'fne.svg' as const,
-        imageAlt: 'Map of France with digital mediation points',
+        imageAlt: 'Map of France with digital inclusion sites',
         backgroundColor: '#F5F5FE',
         title:
-          'A set of digital tools useful for implementing the national public policy on digital inclusion',
+          'A suite of digital tools supporting France’s national policy for digital inclusion',
         description:
-          'For more than 3 years, we have supported the Digital Society program of the National Agency for Territorial Cohesion in improving and designing an ecosystem of digital tools useful to digital mediation actors to support people who are far from digital technology and manage various programs.',
+          'For over three years, we partnered with the Société Numérique program at the Agence Nationale de la Cohésion des Territoires to improve and design an ecosystem of tools that help digital‑inclusion practitioners support people excluded from digital services and manage national programs.',
         collaboration:
-          'In collaboration with <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> and <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - TODAY',
-        tags: ['Product design', 'Team structuring'],
+          'In collaboration with <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> and <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 – present',
+        tags: ['Product design', 'Team structure'],
       },
       {
         image: 'docaposte.png' as const,
         imageAlt: 'Docaposte design system',
         backgroundColor: '#F8F8FB',
-        title: 'Making the user experience of Docaposte tools consistent',
+        title: 'Bringing consistency to Docaposte’s product experience',
         description:
-          'Design of the Docaposte Design System, with a dual challenge: translate their new visual identity within heterogeneous products & evolve them towards greater coherence visually and in their uses.',
+          'Design of the Docaposte Design System with a dual objective: translate their new visual identity across heterogeneous products and evolve them toward greater visual and usage consistency.',
         collaboration:
           'In collaboration with <a href="https://www.docaposte.com/solutions/pollux-design-dexperience-innovation" target="_blank" class="underline cursor-pointer">Pollux</a> · 2019',
-        tags: ['Design system', 'UX/UI Design'],
+        tags: ['Design system', 'UX/UI design'],
       },
       {
         image: 'gps.png' as const,
-        imageAlt: 'Evelity indoor GPS application',
+        imageAlt: 'Evelity indoor navigation app',
         backgroundColor: '#F0F3F0',
-        title: 'Indoor GPS application for visually impaired people',
+        title: 'Indoor GPS app for people with visual impairments',
         description:
-          'An iOS and Android mobile application that allows people with visual or motor disabilities to be guided, outdoors and indoors in complex places such as metro stations.',
+          'An iOS and Android app that guides people with visual or motor disabilities both outdoors and indoors in complex venues such as metro stations.',
         collaboration:
           'In collaboration with <a href="https://www.evelity.com/" target="_blank" class="underline cursor-pointer">Evelity</a> · 2019',
         tags: ['Mobile', 'Development'],
       },
       {
         image: 'nutriscore.png' as const,
-        imageAlt: 'Nutriscore',
+        imageAlt: 'Nutri-Score',
         backgroundColor: '#F9FAE6',
-        title: 'Experience platform for research',
+        title: 'Real‑time experiment platform for research',
         description:
-          'A web application that allows researchers in behavioral economics to create protocols and conduct multiplayer experiments in real time. Used for example to implement the nutriscore in France.',
+          'A web app that lets behavioral economists build protocols and run real‑time, multi‑player experiments—for example, used in the rollout of the Nutri‑Score in France.',
         collaboration:
-          'In collaboration with the <a href="https://gael.univ-grenoble-alpes.fr" target="_blank" class="underline cursor-pointer">Laboratory of Applied Economics of Grenoble</a> · 2018 - 2021',
+          'In collaboration with the <a href="https://gael.univ-grenoble-alpes.fr" target="_blank" class="underline cursor-pointer">Laboratoire d’Économie Appliquée de Grenoble</a> · 2018 – 2021',
         tags: ['Web', 'Development'],
       },
     ],
   },
   collective: {
-    title: 'The members of the collective',
+    title: 'Our collective',
     members: [
       {
         image: 'sylvain.png' as const,
         name: 'Sylvain Aubry',
         role: 'Designer',
-        bio: 'UX/UI designer trained in a holistic approach to design, Sylvain is passionate about survey and user research phases that involve a form of immersion in a social situation and specific practices.\n\nSylvain also brings care and particular attention to the graphic design of interfaces thanks to his graphic design skills.',
+        bio: 'A UX/UI designer with a holistic approach, Sylvain is passionate about fieldwork and user research that immerses him in specific social contexts and practices.\n\nHe brings exacting visual craft to interface design thanks to his strong graphic design skills.',
         linkedin: 'https://www.linkedin.com/in/sasylvainaubry/',
       },
       {
         image: 'thibault.png' as const,
         name: 'Thibault Rouveyrol',
         role: 'Product Manager',
-        bio: 'From San Francisco to Paris, Thibault has managed products in demanding environments. He knows how to bring out the right direction, transform user needs into clear decisions and establish ways of working that stand the test of time.\n\nA goal: useful services, well designed, delivered without unnecessary complexity, by teams that gain confidence and autonomy.',
+        bio: 'From San Francisco to Paris, Thibault has led products in demanding environments. He surfaces the right direction, turns user needs into clear decisions, and installs ways of working that last.\n\nOne goal: useful services, well designed, delivered without unnecessary complexity, by teams growing in confidence and autonomy.',
         linkedin: 'https://www.linkedin.com/in/thibaultrouveyrol/',
       },
       {
         image: 'hugues.png' as const,
         name: 'Hugues Maignol',
         role: 'CTO, Developer',
-        bio: 'Entrepreneur and experienced CTO, Hugues has supported companies from startup to multinational. He designs technical architectures adapted to each project and leads development teams to implement them.\n\nHe favors development practices that promote quality and maintainability, collaboration and a serene work environment.',
+        bio: 'An entrepreneur and seasoned CTO, Hugues has supported companies from startups to multinationals. He designs technical architectures tailored to each project and leads development teams to deliver them.\n\nHe favors development practices that improve quality and maintainability, foster collaboration, and create a positive working environment.',
         linkedin: 'https://www.linkedin.com/in/huguesmaignol/',
       },
     ],
   },
   skills: {
-    title: 'Our expertise',
+    title: 'Our capabilities',
     categories: [
       {
         title: 'Design',
@@ -180,17 +179,17 @@ export const en: Translations = {
           {
             title: 'Research',
             description:
-              'Diagnostics of existing systems, field research and learning synthesis, ideation and co-creation workshops, user testing and interviews',
+              'Current‑state audit, field studies and insight synthesis, ideation and co‑creation workshops, user testing and interviews',
           },
           {
-            title: 'UX/UI Design',
+            title: 'UX/UI design',
             description:
-              'User journeys and wireframes, interface design (UI), design system, interactive prototyping close to the solution to be developed',
+              'User journeys and wireframes, interface design (UI), design systems, interactive prototyping',
           },
           {
-            title: 'Graphic design',
+            title: 'Visual design',
             description:
-              'Visual identity, graphic charter, digital and printed graphic materials',
+              'Visual identity, brand guidelines, digital and print assets',
           },
         ],
       },
@@ -198,19 +197,19 @@ export const en: Translations = {
         title: 'Product',
         items: [
           {
-            title: 'Framing and vision',
+            title: 'Framing & vision',
             description:
-              'Clarification of objectives, audiences and challenges, definition of value proposition, prioritized and measurable roadmap.',
+              'Clarify goals, audiences, and stakes; define the value proposition; build a prioritized, measurable roadmap.',
           },
           {
-            title: 'Iteration-driven delivery',
+            title: 'Iterative delivery',
             description:
-              'Organization of work in short cycles, regular review of results, continuous adjustments to deliver value quickly.',
+              'Organize work in short cycles, review results regularly, and adjust continuously to deliver value quickly.',
           },
           {
-            title: 'Responsibilities and roles',
+            title: 'Roles & responsibilities',
             description:
-              'Clear allocation of responsibilities, simple and useful rituals, synchronization between product, design and technology.',
+              'Clear ownership, simple and useful rituals, tight alignment across product, design, and engineering.',
           },
         ],
       },
@@ -220,17 +219,17 @@ export const en: Translations = {
           {
             title: 'Architecture',
             description:
-              'Design the technical strategy adapted to project needs and constraints, designed for performance and scalability.',
+              'Design technical strategy tailored to project needs and constraints, built for performance and scalability.',
           },
           {
             title: 'Code',
             description:
-              'Continuous delivery, automated tests, methodologies compliant with standards and best development practices.',
+              'Continuous delivery, automated testing, standards‑compliant methodologies and engineering best practices.',
           },
           {
             title: 'Artificial intelligence',
             description:
-              'Integration of AI tools, respecting your constraints and keeping control over your data.',
+              'Integrate AI tools while respecting your constraints and keeping you in control of your data.',
           },
         ],
       },
@@ -242,3 +241,5 @@ export const en: Translations = {
     emailLabel: 'Send us an email at',
   },
 };
+
+export type Translations = typeof en;
