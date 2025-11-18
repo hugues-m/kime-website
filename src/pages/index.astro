@@ -17,7 +17,6 @@ const translations = getTranslations('fr');
     paths={{ fr: '/', en: '/en' }}
   />
   <script>
-    console.log('INDEX SCRIPT');
     if (typeof window !== 'undefined' && window.kimeLocale) {
       window.kimeLocale.redirectIfNeeded({
         currentLocale: 'fr',
