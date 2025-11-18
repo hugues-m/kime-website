@@ -96,7 +96,8 @@ export const darkFr: Translations = {
   },
   projects: {
     title: 'Sélection de projets',
-    cta: 'Pour en savoir plus sur nos échecs contrôlés, <a href="#contact" class="underline cursor-pointer">contactez-nous</a>',
+    ctaTitle: 'En savoir plus',
+    cta: 'Pour en savoir plus sur nos échecs, <a href="#contact" class="underline cursor-pointer">contactez-nous</a>',
     list: [
       {
         image: 'fne.svg' as const,

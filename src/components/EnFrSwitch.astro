@@ -35,7 +35,7 @@ const { currentLocale, paths } = Astro.props as Props;
   </button>
 </div>
 
-<script define:vars={{ currentLocale, paths }}>
+<script is:inline define:vars={{ currentLocale, paths }}>
   document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('button[data-locale]');
 

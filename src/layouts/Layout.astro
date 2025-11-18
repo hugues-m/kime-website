@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { siteConfig } from '../config/config';
 
 type Props = {
   title: string;
@@ -8,28 +9,151 @@ type Props = {
   bodyClass?: string;
   ogImage?: string;
   ogUrl?: string;
+  noindex?: boolean;
+  keywords?: string[];
 };
 
-const { title, lang, description, bodyClass, ogImage, ogUrl } =
-  Astro.props as Props;
+const {
+  title,
+  lang,
+  description,
+  bodyClass,
+  ogImage,
+  ogUrl,
+  noindex,
+  keywords,
+} = Astro.props as Props;
 
 const siteUrl = ogUrl || Astro.url.href;
 const siteOrigin = Astro.url.origin;
+const canonicalUrl = siteUrl;
 const imageUrl = ogImage
   ? ogImage.startsWith('http')
     ? ogImage
     : `${siteOrigin}${ogImage}`
-  : `${siteOrigin}/og-image.png`;
-const siteName = 'KIME';
+  : `${siteOrigin}${siteConfig.ogImage}`;
+
+// Generate alternate language URLs
+const alternateUrls: Record<string, string> = {};
+if (lang === 'fr') {
+  alternateUrls['en'] =
+    `${siteOrigin}/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+} else {
+  alternateUrls['fr'] =
+    `${siteOrigin}${Astro.url.pathname.replace('/en', '') || '/'}`;
+}
+
+// Structured data for Organization
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteConfig.name,
+  alternateName: siteConfig.alternateNames,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  description:
+    description || siteConfig.tagline[lang as keyof typeof siteConfig.tagline],
+  logo: `${siteOrigin}/favicon.svg`,
+};
+
+// WebSite structured data
+const websiteStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.name,
+  alternateName: siteConfig.alternateNames,
+  url: siteConfig.url,
+};
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {/* Primary Meta Tags */}
+    <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    {
+      keywords && keywords.length > 0 && (
+        <meta name="keywords" content={keywords.join(', ')} />
+      )
+    }
+    <meta name="author" content={siteConfig.author.name} />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, nofollow' : 'index, follow'}
+    />
+    <meta name="language" content={lang === 'fr' ? 'French' : 'English'} />
+
+    {/* Canonical URL */}
+    <link rel="canonical" href={canonicalUrl} />
+
+    {/* Alternate Language Links (hreflang) */}
+    {
+      Object.entries(alternateUrls).map(([locale, url]) => (
+        <link rel="alternate" hreflang={locale} href={url} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={siteConfig.url} />
+
+    {/* Favicon */}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    {/* Open Graph / Facebook */}
+    <meta property="og:type" content={siteConfig.ogType} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
+    {
+      Object.entries(alternateUrls).map(([locale]) => (
+        <meta
+          property="og:locale:alternate"
+          content={locale === 'fr' ? 'fr_FR' : 'en_US'}
+        />
+      ))
+    }
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={title} />
+    {
+      /*
+      'twitter' in siteConfig.social && siteConfig.social.twitter && (
+        <meta name="twitter:site" content={siteConfig.social.twitter} />
+      )
+     */
+    }
+
+    {/* Additional meta tags */}
+    <meta name="theme-color" content={siteConfig.themeColor} />
+    <meta name="format-detection" content="telephone=no" />
+
+    {/* Structured Data (JSON-LD) */}
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteStructuredData)}
+    />
+
+    {/* Fonts */}
     <link
       rel="preconnect"
       href="https://api.fontshare.com"
@@ -50,30 +174,9 @@ const siteName = 'KIME';
       href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>{title}</title>
-
-    {/* Open Graph / Facebook */}
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={siteUrl} />
-    <meta property="og:title" content={title} />
-    {description && <meta property="og:description" content={description} />}
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
-
-    {/* Twitter */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={siteUrl} />
-    <meta name="twitter:title" content={title} />
-    {description && <meta name="twitter:description" content={description} />}
-    <meta name="twitter:image" content={imageUrl} />
-
-    {/* Additional meta tags */}
-    <meta name="theme-color" content="#00004d" />
   </head>
   <body id="kime" class={bodyClass}>
     <script>
-      console.log('LAYOUT SCRIPT');
       const PREFERRED_LOCALE_KEY = 'kime-preferred-locale';
       type Locale = 'fr' | 'en';
 
@@ -124,13 +227,6 @@ const siteName = 'KIME';
         // Check preferred locale first
         const preferredLocale = getPreferredLocale();
         const targetLocale = preferredLocale || detectBrowserLanguage();
-
-        console.log({
-          preferredLocale,
-          targetLocale,
-          currentLocale,
-          paths,
-        });
 
         // If current locale matches target locale, no redirect needed
         if (currentLocale === targetLocale) return;
