@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { siteConfig } from '../config/config';
+import { config } from '../config/config';
 
 type Props = {
   title: string;
@@ -8,61 +8,47 @@ type Props = {
   description?: string;
   bodyClass?: string;
   ogImage?: string;
-  ogUrl?: string;
   noindex?: boolean;
   keywords?: string[];
 };
 
-const {
-  title,
-  lang,
-  description,
-  bodyClass,
-  ogImage,
-  ogUrl,
-  noindex,
-  keywords,
-} = Astro.props as Props;
+const { title, lang, description, bodyClass, ogImage, noindex, keywords } =
+  Astro.props as Props;
 
-const siteUrl = ogUrl || Astro.url.href;
-const siteOrigin = Astro.url.origin;
-const canonicalUrl = siteUrl;
-const imageUrl = ogImage
-  ? ogImage.startsWith('http')
-    ? ogImage
-    : `${siteOrigin}${ogImage}`
-  : `${siteOrigin}${siteConfig.ogImage}`;
+const imageUrl = config.absoluteUrl(ogImage || config.ogImage);
 
 // Generate alternate language URLs
 const alternateUrls: Record<string, string> = {};
 if (lang === 'fr') {
-  alternateUrls['en'] =
-    `${siteOrigin}/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`;
+  alternateUrls['en'] = config.absoluteUrl(
+    `/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}`
+  );
 } else {
-  alternateUrls['fr'] =
-    `${siteOrigin}${Astro.url.pathname.replace('/en', '') || '/'}`;
+  alternateUrls['fr'] = config.absoluteUrl(
+    Astro.url.pathname.replace(/^\/en/, '') || '/'
+  );
 }
 
 // Structured data for Organization
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: siteConfig.name,
-  alternateName: siteConfig.alternateNames,
-  url: siteConfig.url,
-  email: siteConfig.email,
+  name: config.name,
+  alternateName: config.alternateNames,
+  url: config.baseUrl,
+  email: config.email,
   description:
-    description || siteConfig.tagline[lang as keyof typeof siteConfig.tagline],
-  logo: `${siteOrigin}/favicon.svg`,
+    description || config.tagline[lang as keyof typeof config.tagline],
+  logo: config.absoluteUrl('/favicon.svg'),
 };
 
 // WebSite structured data
 const websiteStructuredData = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: siteConfig.name,
-  alternateName: siteConfig.alternateNames,
-  url: siteConfig.url,
+  name: config.name,
+  alternateName: config.alternateNames,
+  url: config.baseUrl,
 };
 ---
 
@@ -80,7 +66,7 @@ const websiteStructuredData = {
         <meta name="keywords" content={keywords.join(', ')} />
       )
     }
-    <meta name="author" content={siteConfig.author.name} />
+    <meta name="author" content={config.author.name} />
     <meta
       name="robots"
       content={noindex ? 'noindex, nofollow' : 'index, follow'}
@@ -88,7 +74,7 @@ const websiteStructuredData = {
     <meta name="language" content={lang === 'fr' ? 'French' : 'English'} />
 
     {/* Canonical URL */}
-    <link rel="canonical" href={canonicalUrl} />
+    <link rel="canonical" href={config.baseUrl} />
 
     {/* Alternate Language Links (hreflang) */}
     {
@@ -96,22 +82,22 @@ const websiteStructuredData = {
         <link rel="alternate" hreflang={locale} href={url} />
       ))
     }
-    <link rel="alternate" hreflang="x-default" href={siteConfig.url} />
+    <link rel="alternate" hreflang="x-default" href={config.baseUrl} />
 
     {/* Favicon */}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
     {/* Open Graph / Facebook */}
-    <meta property="og:type" content={siteConfig.ogType} />
-    <meta property="og:url" content={siteUrl} />
+    <meta property="og:type" content={config.ogType} />
+    <meta property="og:url" content={config.baseUrl} />
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
     <meta property="og:image" content={imageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={title} />
-    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:site_name" content={config.name} />
     <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_US'} />
     {
       Object.entries(alternateUrls).map(([locale]) => (
@@ -124,7 +110,7 @@ const websiteStructuredData = {
 
     {/* Twitter Card */}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={siteUrl} />
+    <meta name="twitter:url" content={config.baseUrl} />
     <meta name="twitter:title" content={title} />
     {description && <meta name="twitter:description" content={description} />}
     <meta name="twitter:image" content={imageUrl} />
@@ -138,7 +124,7 @@ const websiteStructuredData = {
     }
 
     {/* Additional meta tags */}
-    <meta name="theme-color" content={siteConfig.themeColor} />
+    <meta name="theme-color" content={config.themeColor} />
     <meta name="format-detection" content="telephone=no" />
 
     {/* Structured Data (JSON-LD) */}

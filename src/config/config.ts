@@ -1,4 +1,15 @@
-export const siteConfig = {
+const scheme = import.meta.env.VERCEL ? 'https://' : 'http://';
+const productionWebsiteUrl =
+  import.meta.env.VERCEL_PROJECT_PRODUCTION_URL || 'kime.studio';
+const branchWebsiteUrl = import.meta.env.VERCEL_BRANCH_URL || 'localhost:4321';
+
+const isProduction = import.meta.env.VERCEL_ENV === 'production';
+
+const baseUrl = isProduction
+  ? `${scheme}${productionWebsiteUrl}`
+  : `${scheme}${branchWebsiteUrl}`;
+
+export const config = {
   // Site identity
   name: 'KIME',
   alternateNames: ['Kime', 'KIME Studio', 'Kime Studio'],
@@ -8,7 +19,10 @@ export const siteConfig = {
   },
 
   // Site URLs
-  url: import.meta.env.PUBLIC_SITE_URL || 'https://kime.studio',
+  baseUrl,
+  absoluteUrl: (path: string): string => {
+    return `${baseUrl}${path}`;
+  },
 
   // Contact & Author information
   email: 'contact@kime.studio',
@@ -28,7 +42,7 @@ export const siteConfig = {
   locales: ['fr', 'en'] as const,
 
   // Environment
-  isProduction: import.meta.env.VERCEL_ENV === 'production',
+  isProduction,
 
   // Theme
   themeColor: '#00004d',
@@ -37,7 +51,3 @@ export const siteConfig = {
   ogImage: '/og-image.png',
   ogType: 'website',
 } as const;
-
-export const config = {
-  isProduction: import.meta.env.VERCEL_ENV === 'production',
-};
