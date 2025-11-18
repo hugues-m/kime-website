@@ -13,9 +13,11 @@
   --color-secondary: #828383;
   --color-accent: #00b2a9;
   --color-background-grey: #f7f5f7;
-  --color-background-grey-hover: #E0E1E1;
+  --color-background-grey-hover: #e0e1e1;
   --color-stroke-default: #cecece;
-  --breakpoint-header-xl: 1256px;
+  --breakpoint-md: 808px;
+  --breakpoint-header-xl-fr: 1280px;
+  --breakpoint-header-xl-en: 1096px;
 }
 
 html {
@@ -79,12 +81,21 @@ body.dark {
   font-family: var(--font-family-body);
 }
 
-/* Custom breakpoint utility for 1256px */
-@media (min-width: 1256px) {
-  .header-xl-inline {
+/* Custom breakpoint utility for en and fr layouts */
+@media (min-width: 1280px) {
+  .header-xl-inline-fr {
     display: inline;
   }
-  .header-xl-hidden {
+  .header-xl-hidden-fr {
+    display: none;
+  }
+}
+
+@media (min-width: 1096px) {
+  .header-xl-inline-en {
+    display: inline;
+  }
+  .header-xl-hidden-en {
     display: none;
   }
 }
@@ -100,7 +111,7 @@ body.dark {
   scroll-margin-top: 88px; /* Mobile: py-6 (24px) + content (40px) + py-6 (24px) = 88px */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 808px) {
   [id] {
     scroll-margin-top: 104px; /* Desktop: py-8 (32px) + content (40px) + py-8 (32px) = 104px */
   }
