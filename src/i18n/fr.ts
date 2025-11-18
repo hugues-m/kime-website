@@ -96,6 +96,7 @@ export const fr = {
   },
   projects: {
     title: 'Sélection de projets',
+    ctaTitle: 'Pour en savoir plus sur nos projets',
     cta: 'Pour en savoir plus sur nos projets, <a href="#contact" class="underline cursor-pointer">contactez-nous</a>',
     list: [
       {

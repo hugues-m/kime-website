@@ -95,6 +95,7 @@ export const en = {
   },
   projects: {
     title: 'Selected work',
+    ctaTitle: 'Learn more about our projects',
     cta: 'To learn more about our projects, <a href="#contact" class="underline cursor-pointer">get in touch</a>',
     list: [
       {
