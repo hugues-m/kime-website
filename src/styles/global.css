@@ -12,7 +12,7 @@
   --color-primary-light: #828383;
   --color-secondary: #828383;
   --color-accent: #00b2a9;
-  --color-background-grey: #f7f5f7;
+  --color-background-grey: #f3f3f3;
   --color-background-grey-hover: #e0e1e1;
   --color-stroke-default: #cecece;
   --breakpoint-md: 808px;
@@ -115,4 +115,17 @@ body.dark {
   [id] {
     scroll-margin-top: 104px; /* Desktop: py-8 (32px) + content (40px) + py-8 (32px) = 104px */
   }
+}
+
+/* Accordion styles for mobile */
+.accordion-item.open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  display: none;
+}
+
+.accordion-item.open .accordion-content {
+  display: block;
 }

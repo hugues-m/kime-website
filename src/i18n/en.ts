@@ -23,7 +23,7 @@ export const en = {
   hero: {
     title: 'Digital product design & development',
     introA:
-      'Kime is a three‑person collective: a designer, a product manager, and a developer.',
+      'Kime is a three‑person collective: a designer, a product manager, and a developer',
     introB:
       'With complementary skills, we cover the full spectrum of needs across the digital product lifecycle.',
     mission:
@@ -105,7 +105,7 @@ export const en = {
         title:
           'A suite of digital tools supporting France’s national policy for digital inclusion',
         description:
-          'For over three years, we partnered with the Société Numérique program at the Agence Nationale de la Cohésion des Territoires to improve and design an ecosystem of tools that help digital‑inclusion practitioners support people excluded from digital services and manage national programs.',
+          'We partnered with the French interministerial digital directorate (DINUM) and the "Digital Society" program to design and improve a suite of digital tools that help digital‑inclusion practitioners support people excluded from digital services and manage national programs.',
         collaboration:
           'In collaboration with <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> and <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 – present',
         tags: ['Product design', 'Team structure'],

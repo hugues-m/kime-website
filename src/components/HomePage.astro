@@ -16,6 +16,7 @@ import OffersIcon from '../assets/icons/offers.svg';
 import PilliersIcon from '../assets/icons/pilliers.svg';
 import ProjectsIcon from '../assets/icons/projects.svg';
 import SkillsIcon from '../assets/icons/skills.svg';
+import { ChevronDown } from '@lucide/astro';
 
 type Props = {
   translations: Translations;
@@ -65,12 +66,12 @@ const imageMap = {
     </h2>
     {/* Hero Section */}
     <section
-      class="w-full pt-6 pb-[120px] md:pt-[72px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-16 md:gap-[90px]"
+      class="w-full pt-16 md:pt-6 pb-[120px] md:pt-[72px] md:pb-[200px] px-4 md:px-[72px] flex flex-col gap-16 md:gap-[90px]"
     >
       <div class="flex flex-col gap-6 md:gap-8">
         <div class="flex flex-col gap-8 md:gap-[32px]">
           <p
-            class="font-body font-semibold text-[28px] md:text-[52px] leading-normal tracking-[0.56px] md:tracking-[1.04px]"
+            class="font-body font-semibold text-[28px] leading-[38px] md:text-[52px] md:leading-[71px] tracking-[0.56px] md:tracking-[1.04px]"
           >
             <span class="text-primary">{translations.hero.introA}</span>
             <span class="text-primary font-normal"> ↦ </span>
@@ -101,16 +102,30 @@ const imageMap = {
       <div class="flex flex-col md:grid md:grid-cols-4 gap-6 md:gap-10">
         {
           translations.approach.principles.map((principle) => (
-            <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-5 md:gap-6 accordion-item">
               <Hr />
-              <div class="flex flex-col gap-3">
+              <div class="flex flex-col gap-5 md:gap-3">
+                <button
+                  type="button"
+                  class="accordion-trigger flex items-center justify-between w-full text-left cursor-pointer md:hidden"
+                >
+                  <p
+                    set:text={principle.title}
+                    class="font-body font-bold text-[16px] text-secondary leading-[22px] whitespace-pre-wrap"
+                  />
+                  <ChevronDown class="accordion-icon w-6 h-6 text-secondary shrink-0 ml-6" />
+                </button>
+                {/* Desktop: title only (no button) */}
                 <p
                   set:text={principle.title}
-                  class="font-body font-bold text-[20px] text-secondary leading-[30px] whitespace-pre-wrap"
+                  class="font-body font-bold text-[20px] text-secondary leading-[30px] whitespace-pre-wrap hidden md:block"
                 />
-                <p class="font-body font-normal text-[16px] text-primary leading-[22px] hidden md:block">
-                  {principle.description}
-                </p>
+                {/* Description: animated on mobile, always visible on desktop */}
+                <div class="accordion-content md:block!">
+                  <p class="font-body font-normal text-[16px] text-primary leading-[22px]">
+                    {principle.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))
@@ -408,3 +423,12 @@ const imageMap = {
     </section>
   </main>
 </div>
+
+<script>
+  document.querySelectorAll('.accordion-trigger').forEach((button) => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.accordion-item');
+      item?.classList.toggle('open');
+    });
+  });
+</script>
