@@ -43,7 +43,7 @@ export const fr = {
           "Pour concevoir un produit désirable, les interfaces doivent être soignées, construites avec attention, en coopération constante avec les utilisateurs, testées et peaufinées continuellement. La conception en évolution permet d'atteindre un objectif\u00A0: faire mieux, à chaque itération.",
       },
       {
-        title: 'Des produits simples, accessibles & frugaux',
+        title: 'Des produits simples, accessibles & frugaux',
         description:
           "La recherche de la simplicité [repérer le superflu] est au coeur de notre conception produit. La simplicité d'usage d'un produit viens soutenir son accessibilité à toutes et tous [simple à pratiquer et à comprendre] et sa frugalité [minimiser autant que possible son impact environnemental].",
       },
@@ -106,7 +106,7 @@ export const fr = {
         title:
           "Un ensemble d'outils numériques utiles à la mise en oeuvre de la politique publique nationale d'inclusion numérique",
         description:
-          "Nous avons accompagné, pendant plus de 3 ans, le programme Société Numérique de l'Agence Nationale de la Cohésion des Territoires dans l'amélioration et la conception d'un écosystème d'outils numériques utiles aux acteurs de la médiation numérique pour accompagner les personnes éloignées du numérique et piloter différents dispositifs.",
+          'Nous avons accompagné Société Numérique de l’Agence Nationale de la Cohésion des Territoires dans l’amélioration et la conception d’outils numériques utiles aux acteurs de la médiation numérique pour accompagner les personnes éloignées du numérique et piloter différents dispositifs.',
         collaboration:
           'En collaboration avec <a href="https://beta.gouv.fr/" target="_blank" class="underline cursor-pointer">Beta.Gouv</a> et <a href="https://anct.gouv.fr/programmes-dispositifs/societe-numerique" target="_blank" class="underline cursor-pointer">Société Numérique</a> · 2022 - AUJOURD’HUI',
         tags: ['Conception produit', "Structuration d'équipe"],
